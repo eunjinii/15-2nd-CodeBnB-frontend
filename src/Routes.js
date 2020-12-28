@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
 import RoomList from "./Pages/RoomList/RoomList";
 import RoomDetail from "./Pages/RoomDetail/RoomDetail";
+import Home from "./Pages/Home/Home";
 
 class Routes extends Component {
   render() {
