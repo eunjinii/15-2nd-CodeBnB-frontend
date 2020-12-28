@@ -5,10 +5,13 @@ import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/Theme";
 
+const { Kakao } = window;
+Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <GlobalStyle />
     <Routes />
+    <GlobalStyle />
   </ThemeProvider>,
   document.getElementById("root")
 );
