@@ -2,5 +2,6 @@
   "tabWidth": 2,
   "endOfLine": "lf",
   "arrowParens": "avoid",
-  "singleQuote": false
+  "singleQuote": false,
+  "printWidth": 120
 }
