@@ -5,6 +5,7 @@ import Signup from "./Signup/Signup";
 import styled from "styled-components";
 import { flexAlignCenter, flexCenter, flexJustCenter } from "../../styles/Theme";
 import { ReactComponent as HamburgerIcon } from "./hamburger.svg";
+import DatePicker from "../DatePicker/DatePicker";
 
 const TOGGLE_HAMBURGER = "toggleHamburger";
 const TOGGLE_LOGIN = "toggleLogin";
@@ -15,6 +16,8 @@ const Navigation = () => {
   const [isLogInClicked, setIsLogInClicked] = useState(false);
   const [isSignupClicked, setIsSignupClicked] = useState(false);
   const [requireBirthday, setRequireBirthday] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const hamburgerRef = useRef();
   const history = useHistory();
 
@@ -67,7 +70,17 @@ const Navigation = () => {
             <img src="/images/Navigation/airbnb.png" alt="codebnb" />
             <span>codebnb</span>
           </Logosection>
-          <Datesection></Datesection>
+          <Datesection>
+            <DatePicker
+              start={startDate}
+              end={endDate}
+              updateStartDate={setStartDate}
+              updateEndDate={setEndDate}
+              blockedDates={["2021-02-14", "2021-02-20", "2021-02-28"]}
+              gapBetweenMonth={50}
+              clearPosition={90}
+            />
+          </Datesection>
           <Hamburgersection>
             <div className="host">호스트 되기</div>
             <div onClick={() => handleClick(TOGGLE_HAMBURGER)} className="hamburgerMenu" ref={hamburgerRef}>
