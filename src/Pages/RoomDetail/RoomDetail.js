@@ -28,29 +28,29 @@ class RoomDetail extends Component {
                 <img
                   className="imgBig"
                   src="https://a0.muscache.com/im/pictures/43ab1060-8690-429b-a64e-9d5a510538a4.jpg?im_w=1200"
-                  alt="My Image"
+                  alt=""
                 />
               </div>
               <div className="imgSlider">
                 <img
                   className="imgSmall1"
                   src="https://a0.muscache.com/im/pictures/6aa0742d-881a-4f34-a6f0-45669377b59b.jpg?im_w=720"
-                  alt="My Image"
+                  alt=""
                 />
                 <img
                   className="imgSmall2"
                   src="https://a0.muscache.com/im/pictures/6c69502b-f29d-42cd-9a7a-0bae750af432.jpg?im_w=720"
-                  alt="My Image"
+                  alt=""
                 />
                 <img
                   className="imgSmall3"
                   src="https://a0.muscache.com/im/pictures/9e83c517-a9cf-4e2c-a707-5adda2a40e60.jpg?im_w=720"
-                  alt="My Image"
+                  alt=""
                 />
                 <img
                   className="imgSmall4"
                   src="https://a0.muscache.com/im/pictures/62dfb3a2-721e-4e21-a025-9e9168653d9f.jpg?im_w=720"
-                  alt="My Image"
+                  alt=""
                 />
                 <button>사진 모두 보기</button>
               </div>
