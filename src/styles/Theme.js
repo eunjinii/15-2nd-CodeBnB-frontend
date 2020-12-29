@@ -20,21 +20,17 @@ const theme = {
   bgColorGray: "#f7f7f7",
   borderColor: "#f8f9fa",
 };
-
 export const flexCenter = css`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-
 export const flexJustCenter = css`
   display: flex;
   justify-content: center;
 `;
-
 export const flexAlignCenter = css`
   display: flex;
   align-items: center;
 `;
-
 export default theme;

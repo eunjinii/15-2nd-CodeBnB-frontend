@@ -1,0 +1,407 @@
+@import "../../styles/common.scss";
+
+.ReservationContainer {
+  margin: 100px;
+  width: 365px;
+  // height: 542.54px;
+  border-radius: 10px;
+  border: 1px solid#bdbdbd;
+  box-shadow: 10px 10px 20px rgba(216, 216, 216, 0.733);
+
+  .topBox {
+    padding: 24px;
+    .reservationInfo {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 24px;
+      .infoDescription {
+        display: block;
+        font-size: 22px;
+      }
+      .infoPrice {
+        display: none;
+      }
+
+      .reservationInfoBox {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .redStar {
+          width: 12px;
+          height: 12px;
+          margin-right: 8px !important;
+        }
+        .infoScore {
+          font-size: 14px;
+        }
+        .infoReviewCount {
+          margin-left: 8px;
+          font-size: 14px;
+          color: gray;
+          font-weight: 100;
+        }
+      }
+    }
+
+    .middleBox {
+      font-size: 12px;
+      margin-bottom: 16px;
+
+      .middleCheckText {
+      }
+      .middleCheckBtn {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+    }
+
+    .checkInBox {
+      .checkContainer {
+        width: 315px;
+        height: 111.98px;
+        margin-bottom: 16px;
+
+        .checkContainerTop {
+          display: flex;
+          justify-content: flex-start;
+          cursor: pointer;
+
+          .checkInDate {
+            width: 160.52px;
+            height: 55.99px;
+            padding: 12px;
+            border: 1px solid#bdbdbd;
+            border-radius: 10px 0px 0px 0px;
+
+            .checkInDateText {
+              font-weight: 700;
+              font-size: 10px;
+              margin-bottom: 5px;
+            }
+
+            .checkInDatePlus {
+              font-size: 14px;
+            }
+          }
+          .checkOutDate {
+            width: 160.52px;
+            height: 55.99px;
+            padding: 12px;
+            border: 1px solid#bdbdbd;
+            border-radius: 0px 10px 0px 0px;
+
+            .checkOutDateText {
+              font-weight: 700;
+              font-size: 10px;
+              margin-bottom: 5px;
+            }
+
+            .checkOutDatePlus {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .datePickerContainer {
+          width: 686px;
+          display: flex;
+          justify-content: center;
+          box-shadow: 10px 10px 20px rgba(216, 216, 216, 0.733);
+        }
+
+        .checkContainerBottom {
+          position: relative;
+          .checkInNum {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 12px 10px 12px;
+            border: 1px solid#bdbdbd;
+            border-radius: 0px 0px 10px 10px;
+            cursor: pointer;
+
+            .checkInTopBox {
+              .checkPersonnel {
+                font-size: 10px;
+                margin-bottom: 5px;
+              }
+              .checkGuest {
+                font-size: 14px;
+              }
+            }
+
+            .checkInBottomBox {
+              .guestIcon {
+                width: 14px;
+                height: 14px;
+                margin-top: 5px;
+              }
+            }
+          }
+
+          .modalTextContainer {
+            display: none;
+            position: absolute;
+            width: 314.86px;
+            height: 317.89px;
+            border: 1px solid rgb(226, 226, 226);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 0px 0px 16px;
+            box-shadow: 10px 10px 20px rgba(216, 216, 216, 0.733);
+            background-color: #fff;
+            z-index: 999;
+
+            .modalTextBox {
+              .modalAdultBox {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px !important;
+                margin-top: 8px !important;
+
+                .modalAdultText {
+                  font-size: 16px;
+                  padding: 0px 0px 4px;
+                  font-weight: 700;
+                }
+
+                .adultBtnContainer {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  width: 107px;
+                  .modalAdultCount {
+                    margin-top: 5px;
+                  }
+                  .adultMinusBtn {
+                    .nonMinusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: not-allowed;
+                      // pointer-events: none;
+                    }
+                    .minusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: pointer;
+                    }
+                  }
+                  .adultPlusBtn {
+                    .nonPlusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: not-allowed;
+                    }
+                    .plusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+
+              .modalChildContainer {
+                display: flex;
+                justify-content: space-between;
+
+                .modalChildBox {
+                  display: flex;
+                  flex-direction: column;
+                  margin-bottom: 24px !important;
+                  margin-top: 8px !important;
+
+                  .modalChildText {
+                    font-size: 16px;
+                    padding: 0px 0px 4px;
+                    font-weight: 700;
+                  }
+
+                  .modalChildAge {
+                    font-size: 12px;
+                    margin-top: 5px;
+                  }
+                }
+
+                .childBtnContainer {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  width: 107px;
+
+                  .childMinusBtn {
+                    .nonMinusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: not-allowed;
+                    }
+
+                    .minusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: pointer;
+                    }
+                  }
+
+                  .childPlusBtn {
+                    .nonPlusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: not-allowed;
+                    }
+                    .plusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+
+              .modalBabyContainer {
+                display: flex;
+                justify-content: space-between;
+
+                .modalBabyBox {
+                  display: flex;
+                  flex-direction: column;
+                  margin-bottom: 24px !important;
+                  margin-top: 8px !important;
+
+                  .modalBabyText {
+                    font-size: 16px;
+                    padding: 0px 0px 4px;
+                    font-weight: 700;
+                  }
+
+                  .modalBabyAge {
+                    font-size: 12px;
+                    margin-top: 5px;
+                  }
+                }
+
+                .babyBtnContainer {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  width: 107px;
+
+                  .babyPlusBtn {
+                    .nonPlusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: not-allowed;
+                    }
+
+                    .plusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: pointer;
+                    }
+                  }
+
+                  .babyMinusBtn {
+                    .nonMinusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: not-allowed;
+                    }
+
+                    .minusBtn {
+                      width: 32px;
+                      height: 32px;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+            }
+            .modaFooter {
+              margin-bottom: 16px !important;
+              font-size: 14px;
+            }
+
+            .modalClose {
+              cursor: pointer;
+              display: flex;
+              justify-content: flex-end;
+              font-weight: 700;
+              margin: 0px -10px;
+              padding: 10px;
+            }
+          }
+        }
+      }
+      .checkBtn {
+        background-color: #e61e53;
+        color: white;
+        width: 315px;
+        height: 48px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        border: 0px;
+        cursor: pointer;
+        //display: none;
+      }
+
+      .reservationSubmit {
+        background-color: #e61e53;
+        color: white;
+        width: 315px;
+        height: 48px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        border: 0px;
+        cursor: pointer;
+        display: none;
+      }
+
+      .checkBtnContents {
+        display: none;
+        .checkContentsText {
+          padding: 16px;
+          font-size: 14px;
+          display: flex;
+          justify-content: center;
+        }
+        .checkContentsBox {
+          border-bottom: 1px solid#bdbdbd;
+
+          .contentsRoomBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsPriceBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsCleaningBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsServiceBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsRoomBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+          }
+        }
+        .totalPriceBox {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 24px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../styles/common.scss";
+
+.Facility {
+  .clickBtn {
+    background-color: white;
+    color: $font-color-black;
+    border: 1px solid $font-color-black;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    padding: 13px 23px !important;
+    font-size: 16px;
+  }
+
+  .clickBtn:hover {
+    background-color: $border-color;
+  }
+
+  .facilitiesContainer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px 0px 16px;
+
+    .facilitiesIcon {
+      width: 24px;
+      height: 24px;
+      margin-right: 16px;
+    }
+
+    .item {
+      padding: 0px 0px 16px;
+    }
+  }
+}

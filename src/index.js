@@ -11,8 +11,8 @@ Kakao.init(KAKAO_KEY);
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <Routes />
     <GlobalStyle />
+    <Routes />
   </ThemeProvider>,
   document.getElementById("root")
 );
