@@ -1,0 +1,709 @@
+@import "../../styles/common.scss";
+
+.RoomDetail {
+  .grid12-6 {
+    position: relative;
+  }
+  .grid12-6 .inner_box {
+    position: absolute;
+    top: 77%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+    text-align: center;
+  }
+  .grid12-6 .inner_box h2 {
+    font-family: arial;
+    text-align: center;
+    font-size: 26px;
+    font-weight: normal;
+    color: #777;
+  }
+  .grid12-6 .inner_box button {
+    background-color: white;
+    color: $font-color-black;
+    border: 1px solid $font-color-black;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    padding: 7px 15px !important;
+    font-size: 14px;
+  }
+
+  .clickBtn {
+    background-color: white;
+    color: $font-color-black;
+    border: 1px solid $font-color-black;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    padding: 13px 23px !important;
+    font-size: 16px;
+  }
+
+  .clickBtn:hover {
+    background-color: $border-color;
+  }
+
+  .hederLineHeader {
+    display: flex;
+    justify-content: center;
+
+    .hederLineHeaderBox {
+      padding: 0px 80px;
+      .headerLine {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 1115px;
+        padding-top: 24px;
+
+        .titleName {
+          font-weight: bolder;
+          font-size: 26px;
+          height: 30px;
+        }
+
+        .titleBox {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 8px;
+          height: 30px;
+
+          .headerScorePlace {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 14px;
+            align-items: center;
+
+            .redstar {
+              width: 14px;
+              height: 14px;
+              margin-right: 5px;
+            }
+
+            .score {
+              font-weight: 700;
+            }
+            .titleReviewCount {
+              margin-left: 3px;
+              margin-left: 8px;
+              font-size: 14px;
+              color: gray;
+              font-weight: 100;
+            }
+            .place {
+              color: gray;
+            }
+          }
+
+          .headerIconLine {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+            font-weight: 700px;
+
+            .headerShereIconBox {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+              .headerIconBtnShare {
+                cursor: pointer;
+                background-color: #fff;
+                border: none;
+
+                .shareBox {
+                  display: flex;
+                  justify-content: flex-start;
+                  .star {
+                    .headerShereIcon {
+                      width: 16px;
+                      height: 16px;
+                      margin-right: 5px;
+                    }
+                  }
+
+                  .starText {
+                    font-weight: 900;
+                    font-size: 14px;
+                  }
+                }
+              }
+
+              .headerShareBtn {
+                overflow: hidden;
+              }
+            }
+
+            .headerStorageIconBox {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+
+              .headerIconBtnStorage {
+                cursor: pointer;
+                background-color: #fff;
+                border: none;
+
+                .storageBox {
+                  display: flex;
+                  justify-content: flex-start;
+
+                  .heart {
+                    display: flex;
+                    align-items: center;
+                    .headerStorageIcon {
+                      width: 16px;
+                      height: 16px;
+                      margin-right: 5px;
+                    }
+                  }
+
+                  .heartText {
+                    font-weight: 900;
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+
+            .headerStorageBtn {
+              .footerBtn {
+                // cursor: not-allowed !important;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                opacity: 1 !important;
+                border: none !important;
+                background: rgb(221, 221, 221) !important;
+                color: rgb(255, 255, 255) !important;
+                padding: 14px 24px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .imgMoreBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: 650px;
+    .ImgMoreContainer {
+      padding: 10px;
+      object-fit: contain;
+      vertical-align: bottom;
+      height: 90%;
+    }
+  }
+
+  .sliderHeaderContainer {
+    .sliderHeader {
+      display: flex;
+      justify-content: center;
+      .imgSliderBox {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+        padding-top: 15px;
+        max-width: 1280px !important;
+        display: flex;
+        justify-content: center;
+
+        .imgSliderBig {
+          .imgBig {
+            width: 557px;
+            height: 557px;
+            object-fit: cover;
+            vertical-align: bottom;
+            border-width: 0 10px 10px 0 !important;
+            border-radius: 20px 0px 0px 20px;
+          }
+        }
+
+        .imgSlider {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          overflow: hidden;
+
+          .imgSmall1 {
+            object-fit: cover;
+            width: 280px;
+            height: 280px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0 !important;
+            margin-left: 10px;
+          }
+
+          .imgSmall2 {
+            width: 280px;
+            height: 280px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0 !important;
+            object-fit: cover;
+            border-radius: 0px 20px 0px 0px;
+          }
+
+          .imgSmall3 {
+            width: 280px;
+            height: 285px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0 !important;
+            margin-left: 10px;
+            object-fit: cover;
+          }
+
+          .grid12-6 {
+            .imgSmall4 {
+              width: 280px;
+              height: 285px;
+              border: 0 solid transparent;
+              border-width: 0 10px 10px 0 !important;
+              object-fit: cover;
+              border-radius: 0px 0px 20px 0px;
+            }
+            .inner_box {
+              .imgIcon {
+                width: 12px;
+                height: 12px;
+                margin-right: 8px;
+              }
+            }
+          }
+
+          .grid12-6 .inner_box {
+            top: 77%;
+            left: 50%;
+            transform: translate(-25%, -20%);
+            text-align: center;
+          }
+          .grid12-6 .inner_box h2 {
+            font-family: arial;
+            text-align: center;
+            font-size: 26px;
+            font-weight: normal;
+            color: #777;
+          }
+          .grid12-6 .inner_box button {
+            background-color: white;
+            color: $font-color-black;
+            border: 1px solid $font-color-black;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            padding: 7px 13px !important;
+            font-size: 14px;
+          }
+
+          .clickBtn {
+            background-color: white;
+            color: $font-color-black;
+            border: 1px solid $font-color-black;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            padding: 13px 23px !important;
+            font-size: 16px;
+          }
+
+          .clickBtn:hover {
+            background-color: $border-color;
+          }
+
+          .imgMore {
+          }
+        }
+      }
+    }
+
+    .articleContainer {
+      display: flex;
+      justify-content: center;
+
+      .interval {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+        max-width: 1280px !important;
+
+        .intervalBoxWrapper {
+          display: flex;
+          width: 100%;
+
+          .intervalBox {
+            width: 58.3333% !important;
+            margin-left: 0% !important;
+            margin-right: 0% !important;
+
+            .middleTitle {
+              display: flex;
+              justify-content: space-between;
+              padding-top: 15px;
+              padding-bottom: 24px;
+              border-bottom: 1px solid gainsboro;
+
+              .introduction {
+                font-size: 22px;
+                margin-bottom: 8px !important;
+                font-weight: bolder;
+              }
+
+              .middleTitleBoxExplain {
+                font-size: 16px;
+              }
+
+              .middleTitleUserImg {
+                width: 56px;
+                height: 56px;
+                border-radius: 30px;
+              }
+            }
+
+            .houseExplain {
+              padding: 32px;
+              border-bottom: 1px solid gainsboro;
+
+              .ExplainBox {
+                display: flex;
+                justify-content: flex-start;
+                margin-bottom: 24px;
+
+                .house {
+                  margin-bottom: 24px !important;
+
+                  .explainIcon {
+                    width: 24px;
+                    height: 24px;
+                  }
+                }
+
+                .ExplainText {
+                  display: flex;
+                  flex-direction: column;
+                  margin-left: 16px;
+
+                  .explainTitle {
+                    font-weight: 700;
+                    font-size: 16px;
+                    margin: 0px 0px 4px;
+                  }
+
+                  .explainSubheading {
+                    font-size: 14px;
+                    margin-top: 8px;
+                  }
+                }
+              }
+            }
+            .hostIntroduceBox {
+              border-bottom: 1px solid gainsboro;
+
+              .hostIntroduce {
+                width: 80% !important;
+                padding: 48px 0px;
+                line-height: 24px !important; //행간
+                word-break: break-word !important; //글이 길어질 때 줄바꿈
+
+                .moreReadBtn {
+                  border-width: 0px;
+                  cursor: pointer;
+                  font-weight: 900;
+                  text-decoration: underline;
+                }
+                .moreBtn {
+                  width: 1032px;
+                  flex: 1 1 auto !important;
+                  overflow: auto !important;
+                  .modalContent {
+                    max-width: 600px;
+                    padding: 24px;
+                  }
+                }
+              }
+            }
+
+            .bedTitle {
+              font-size: 22px;
+              font-weight: 700;
+              margin-top: 48px;
+            }
+            .bedType {
+              padding-top: 48px;
+              padding-bottom: 48px;
+              border-bottom: 1px solid gainsboro;
+              display: flex;
+              justify-content: flex-start;
+
+              .bedContainer {
+                display: flex;
+                justify-content: flex-start;
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+              }
+            }
+
+            .facilities {
+              padding-top: 48px;
+              padding-bottom: 48px;
+              border-bottom: 1px solid gainsboro;
+              .facilitiesTitle {
+                font-size: 22px;
+                font-weight: 700;
+                padding: 0px 0px 24px;
+              }
+
+              .clickBtn {
+                background-color: white;
+                color: $font-color-black;
+                border: 1px solid $font-color-black;
+                border-radius: 8px;
+                font-weight: 600 !important;
+                padding: 13px 23px !important;
+                font-size: 16px;
+              }
+
+              .facilitiesMoreBtn {
+                background-color: white;
+                color: $font-color-black;
+                border: 1px solid $font-color-black;
+                border-radius: 8px;
+                font-weight: 600 !important;
+                padding: 13px 23px !important;
+                font-size: 16px;
+              }
+
+              .facilitiesMoreBtn:hover {
+                background-color: $border-color;
+              }
+
+              .facilitiesMore {
+                width: 780px;
+                height: 800px;
+                padding: 24px;
+              }
+            }
+          }
+
+          // .wingWrapper {
+          //   background-color: greenyellow;
+          //   position: sticky;
+          //   top: 400px;
+          // }
+        }
+        .reviewBox {
+          padding: 48px 0px;
+          border-bottom: 1px solid gainsboro;
+          border-top: 1px solid gainsboro;
+
+          .reviewScoreTitle {
+            display: flex;
+            justify-self: flex-start;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bolder;
+            padding-bottom: 32px;
+
+            .reviewScoreTitleIcon {
+              .redStar {
+                width: 14px;
+                height: 14px;
+                margin-right: 8px !important;
+              }
+              .reviewScore {
+                font-size: 22px;
+                font-weight: bolder;
+              }
+            }
+          }
+
+          .checkList {
+            width: 100px;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 100%;
+            grid-row-gap: 15px;
+          }
+
+          .gridContainer {
+            margin-top: 22px;
+            display: grid;
+            grid-gap: 1px 140px;
+            grid-template-columns: 400px 400px;
+            padding: 10px;
+          }
+        }
+
+        .reviewGridBox {
+          margin-top: 40px;
+          display: grid;
+          grid-gap: 22px 100px;
+          grid-template-columns: 250px 250px;
+          padding: 10px;
+        }
+
+        .clickBtn.clickBtn.reviewBtn {
+          margin-top: 30px;
+        }
+
+        .mapBox {
+          border-bottom: 1px solid gainsboro;
+          padding: 48px 0px;
+          .mapTitle {
+            font-size: 22px;
+            font-weight: 700;
+            padding: 0px 0px 24px;
+            border-bottom: 1px solid gainsboro;
+          }
+
+          .mapImg {
+            width: 1128px;
+            height: 480px;
+            margin-bottom: 32px;
+          }
+
+          .nomination {
+            margin-bottom: 32px;
+            font-weight: 700;
+          }
+
+          .nominationExplanation {
+            width: 41.6667% !important;
+            margin-bottom: 32px;
+          }
+
+          .mapBtn {
+            margin-bottom: 48px;
+          }
+        }
+
+        .hostIntroductionBox {
+          display: flex;
+          justify-content: flex-start;
+          padding: 25px 0px;
+          border-bottom: 1px solid gainsboro;
+
+          .hostBox {
+            margin-bottom: 24px;
+
+            .hostBoxLine {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              margin-bottom: 20px;
+
+              .hostImgBox {
+                margin-right: 16px;
+
+                .hostImg {
+                  width: 64px;
+                  height: 64px;
+                  border-radius: 30px;
+                }
+              }
+
+              .hostNameSignDate {
+                .hostName {
+                  font-size: 22px;
+                  font-weight: 700;
+                }
+                .signDate {
+                  font-size: 14px;
+                  margin-top: 8px;
+                }
+              }
+            }
+
+            .hostContainerLine {
+              display: flex;
+              justify-content: space-between;
+              .hostContainerBig {
+                width: 41.6667% !important;
+                .hostIntroductionLine {
+                  display: flex;
+                  justify-content: flex-start;
+                  margin-bottom: 24px;
+
+                  .redStar {
+                    width: 14px;
+                    height: 14px;
+                    margin-right: 8px !important;
+                  }
+
+                  .certificationIcon {
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 10px;
+                    margin-left: 40px;
+                  }
+
+                  .hostIntroductionMiniBox {
+                    margin-bottom: 24px;
+                  }
+                }
+
+                .superHostContainer {
+                  display: flex;
+                  flex-direction: column;
+                  margin: 20px 0px;
+
+                  .superHost {
+                    font-weight: 700;
+                  }
+                  .superHostMeaning {
+                    margin-top: 10px;
+                    line-height: 25px;
+                  }
+                }
+              }
+
+              .hostContainerSmall {
+                width: 41.6667% !important;
+                margin-left: 8.33333% !important;
+                .hostBoxItem {
+                  margin-bottom: 16px;
+                }
+                .responseRate {
+                  margin-bottom: 16px;
+                }
+
+                .responseTime {
+                  margin-bottom: 16px;
+                }
+                .clickBtn {
+                  margin-bottom: 16px;
+                }
+
+                .hostText {
+                  margin-bottom: 16px;
+                  font-size: 12px;
+                  line-height: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .precautionsFooter {
+      width: 100%;
+      height: 366px;
+      display: flex;
+      justify-content: center;
+      .precautions {
+        width: 1120px;
+        .importantTitle {
+          font-size: 22px;
+          font-weight: 700;
+          margin: 44px 0px;
+        }
+        .importantItemBox {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}

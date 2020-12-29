@@ -1,30 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
-
+import { reset } from "styled-reset";
 const GlobalStyle = createGlobalStyle`
-  ${reset} 
-
+  ${reset}
   * {
     box-sizing: border-box;
   }
-
-  body {
-    font-family: 'proxima-nova', 'Noto Sans KR', sans-serif;
-    letter-spacing: -0.1px;
-  }
-
-  .svg-icon {
-    width: 1em;
-    height: 1em;
-
-    path, polygon, rect {
-      fill: black;
-    }
-    circle {
-      stroke: #4691f6;
-      stroke-width: 1;
-    }
-  }
+body {
+  font-family: 'proxima-nova', 'Noto Sans KR', sans-serif;
+  letter-spacing: -0.1px;
+}
 `;
-
 export default GlobalStyle;

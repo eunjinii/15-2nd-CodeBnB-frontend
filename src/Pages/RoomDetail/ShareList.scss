@@ -1,0 +1,25 @@
+@import "../../styles/common.scss";
+
+.shareModalContainer {
+  box-sizing: border-box;
+  border-bottom: 1px solid gainsboro;
+
+  .shareModalBox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    padding: 32px;
+    overflow: hidden;
+
+    .shareIconImg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .shareIconText {
+      font-weight: 700;
+      margin-left: 10px;
+    }
+  }
+}

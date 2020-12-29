@@ -1,0 +1,34 @@
+@import "../../styles/common.scss";
+
+.HouseExplain {
+  .explainBox {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+
+    .house {
+      margin-bottom: 24px !important;
+
+      .explainIcon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .ExplainText {
+      display: flex;
+      flex-direction: column;
+      margin-left: 16px;
+
+      .explainTitle {
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0px 0px 4px;
+      }
+
+      .explainSubheading {
+        font-size: 14px;
+      }
+    }
+  }
+}
