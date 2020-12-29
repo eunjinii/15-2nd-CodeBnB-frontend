@@ -1,0 +1,208 @@
+.RoomDetail {
+  .hederLineHeader {
+    background-color: darkcyan;
+    display: flex;
+    justify-content: center;
+
+    .headerLine {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      height: 64px;
+      width: 1115px;
+      // max-width: var(--gp-section-max-width, 1128px) !important;
+      background-color: yellow;
+      padding-left: 80px !important;
+      padding-right: 80px !important;
+      padding-top: 24px;
+      // padding: 0px 80px;
+      .titleName {
+        font-weight: 700px;
+        font-size: 26px;
+        background-color: sandybrown;
+      }
+
+      .titleBox {
+        display: flex;
+        justify-content: space-between;
+        margin: 6px 0px;
+
+        .headerScorePlace {
+          display: flex;
+          justify-content: flex-start;
+          background-color: powderblue;
+          font-size: 14px;
+          .score {
+            font-weight: 700;
+            background-color: green;
+          }
+          .place {
+            color: gray;
+            background-color: pink;
+          }
+        }
+
+        .headerShareStorage {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 14px;
+          background-color: rosybrown;
+          font-weight: 700px;
+          .share {
+            background-color: purple;
+          }
+
+          .storage {
+            background-color: red;
+          }
+        }
+      }
+    }
+  }
+
+  section {
+    .sliderHeader {
+      background-color: darkmagenta;
+      display: flex;
+      justify-content: center;
+      .imgSliderBox {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+        padding-top: 24px;
+        max-width: 1280px !important;
+        display: flex;
+        justify-content: center;
+
+        .imgSliderBig {
+          .imgBig {
+            width: 557px;
+            height: 557px;
+            background-color: seagreen;
+            object-fit: cover;
+            vertical-align: bottom;
+          }
+        }
+
+        .imgSlider {
+          display: grid;
+          // margin: 0 0px -40px 10px;
+          grid-template-columns: repeat(2, 1fr);
+          overflow: hidden;
+
+          .imgSmall1 {
+            object-fit: cover;
+            width: 280px;
+            height: 280px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0;
+            margin-left: 10px;
+          }
+
+          .imgSmall2 {
+            width: 280px;
+            height: 280px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0;
+            object-fit: cover;
+          }
+
+          .imgSmall3 {
+            width: 280px;
+            height: 285px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0;
+            margin-left: 10px;
+            object-fit: cover;
+          }
+
+          .imgSmall4 {
+            width: 280px;
+            height: 285px;
+            border: 0 solid transparent;
+            border-width: 0 10px 10px 0;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  .articleContainer {
+    background-color: darksalmon;
+    display: flex;
+    justify-content: center;
+    .interval {
+      padding-left: 80px !important;
+      padding-right: 80px !important;
+      max-width: 1280px !important;
+
+      .intervalBox {
+        background-color: hotpink;
+
+        width: 58.3333% !important;
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        .middleTitle {
+          padding-top: 48px;
+          padding-bottom: 24px;
+
+          .middleTitleBox {
+            .introduction {
+              font-size: 22px;
+            }
+          }
+
+          .middleTitleBoxExplain {
+            font-size: 16px;
+          }
+
+          .middleTitleBoxImg {
+            width: 56px;
+            height: 56px;
+          }
+        }
+
+        .houseExplain {
+          padding-top: 32px;
+          padding-bottom: 32px;
+        }
+
+        .hostIntroduce {
+          padding-top: 32px;
+          padding-bottom: 48px;
+          line-height: 24px !important; //행간
+          word-break: break-word !important; //글이 길어질 때 줄바꿈
+        }
+
+        .bedType {
+          padding-top: 48px;
+          padding-bottom: 48px;
+        }
+
+        .facilities {
+          padding-top: 48px;
+          padding-bottom: 48px;
+        }
+      }
+    }
+  }
+
+  .precautionsFooter {
+    display: flex;
+    justify-content: center;
+    background-color: greenyellow;
+
+    .precautions {
+      display: flex;
+      justify-content: center;
+      padding-left: 80px !important;
+      padding-right: 80px !important;
+      max-width: 1280px !important;
+
+      .precautions {
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
