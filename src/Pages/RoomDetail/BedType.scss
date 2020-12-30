@@ -1,0 +1,35 @@
+@import "../../styles/common.scss";
+
+.cards {
+  .card {
+    .cardSuburb {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 207px;
+      height: 143px;
+      padding: 24px;
+      border: 1px solid rgb(221, 221, 221);
+      border-radius: 12px;
+
+      .cardIcon {
+        .cardIconItem {
+          .cardIconItemImg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      .cardText {
+        .cardTextTitle {
+          font-weight: 700;
+          font-size: 16px;
+          margin-bottom: 8px;
+        }
+        .cardTextContents {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import "../../styles/common.scss";
+
+.gridContainer {
+  margin-top: 22px;
+  display: grid;
+  grid-gap: 1px 140px;
+  grid-template-columns: 400px 400px;
+  padding: 10px;
+
+  .gridItem {
+    font-size: 30px;
+
+    .reviewContainer {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .userReviewBox {
+        .userImg {
+          width: 56px;
+          height: 56px;
+          border-radius: 30px;
+          margin-right: 10px;
+        }
+      }
+
+      .userReviewText {
+        .userName {
+          font-weight: 700;
+          font-size: 16px;
+          margin-bottom: 3px;
+        }
+
+        .userDate {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .userComments {
+      font-size: 16px;
+      margin-top: 13px;
+      margin-bottom: 5px;
+    }
+  }
+}
