@@ -29,7 +29,6 @@
         padding-top: 24px;
 
         .titleName {
-          // padding-top: 24px;
           font-weight: bolder;
           font-size: 26px;
           height: 30px;
@@ -39,7 +38,6 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          // margin-top: 16px;
           height: 30px;
 
           .headerScorePlace {
@@ -172,7 +170,6 @@
 
         .imgSlider {
           display: grid;
-          // margin: 0 0px -40px 10px;
           grid-template-columns: repeat(2, 1fr);
           overflow: hidden;
 

@@ -12,7 +12,6 @@ class Review extends Component {
           </div>
           <div className="checkListScoreBox">
             <div className="checkListScoreLine">
-              {/* <progress value={scoreValue} max="100" /> */}
               <progress value={scoreValue} max="100"></progress>
             </div>
             <div className="checkListScore">{score}</div>

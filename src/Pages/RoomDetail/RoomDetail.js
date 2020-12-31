@@ -131,7 +131,7 @@ class RoomDetail extends Component {
   }
 
   componentDidMount = () => {
-    fetch("/data/RoomDetail/RoomDetailData.json") //http://localhost:3000/data/data.json
+    fetch("/data/RoomDetail/RoomDetailData.json")
       .then(result => result.json())
       .then(result => {
         this.setState({
@@ -142,10 +142,6 @@ class RoomDetail extends Component {
 
   render() {
     const { house } = this.state;
-    // console.log(house.host?.host_name);
-    //console.log(house.facility_list);
-    // console.log(house.host);
-    // console.log(house?.images);
 
     return (
       <div className="RoomDetail">
