@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./RoomDetail.scss";
+import { Link } from "react-router-dom";
 import Review from "./Review";
 import HouseExplain from "./HouseExplain";
 import BedType from "./BedType";
@@ -193,8 +194,18 @@ class RoomDetail extends Component {
                 <img className="imgSmall1" src={house.images?.[1]} alt="" />
                 <img className="imgSmall2" src={house.images?.[2]} alt="" />
                 <img className="imgSmall3" src={house.images?.[4]} alt="" />
-                <img className="imgSmall4" src={house.images?.[2]} alt="" />
-                <button>사진 모두 보기</button>
+                <div class="grid12-6">
+                  <img className="imgSmall4" src={house.images?.[2]} alt="" />
+                  <div class="inner_box">
+                    <button>
+                      <img className="imgIcon" src="\images\RoomDetail\dot.png" alt="" />
+                      사진 모두 보기
+                    </button>
+                  </div>
+                </div>
+                <div className="imgMore">
+                  <link rel="stylesheet" type="text/css" href="/examples/media/expand_style.css" />
+                </div>
               </div>
             </div>
           </header>
@@ -234,7 +245,13 @@ class RoomDetail extends Component {
                 <div className="hostIntroduceBox">
                   <div className="hostIntroduce">
                     {house.description}
-                    <button>더 읽기</button>
+                    {/* <Link to="./RoomDetail" onClick={this.modalOn} className="TitleImgMore">
+                      더읽기입니당 모달들어갈거에요
+                    </Link> */}
+
+                    <button onClick={this.modalOn} type="button">
+                      버튼입니다
+                    </button>
                   </div>
                 </div>
 
@@ -344,7 +361,9 @@ class RoomDetail extends Component {
                           </div>
                           <span className="hostIntroductionMiniBox">
                             {house.host?.host_description}
-                            <button>더 읽기</button>
+                            <Link to="./RoomDetail" className="TitleImgMore">
+                              더 읽기
+                            </Link>
                           </span>
                         </div>
 

@@ -1,6 +1,33 @@
 @import "../../styles/common.scss";
 
 .RoomDetail {
+  .grid12-6 {
+    position: relative;
+  }
+  .grid12-6 .inner_box {
+    position: absolute;
+    top: 77%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+    text-align: center;
+  }
+  .grid12-6 .inner_box h2 {
+    font-family: arial;
+    text-align: center;
+    font-size: 26px;
+    font-weight: normal;
+    color: #777;
+  }
+  .grid12-6 .inner_box button {
+    background-color: white;
+    color: $font-color-black;
+    border: 1px solid $font-color-black;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    padding: 7px 15px !important;
+    font-size: 14px;
+  }
+
   .clickBtn {
     background-color: white;
     color: $font-color-black;
