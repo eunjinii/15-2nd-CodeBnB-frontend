@@ -21,7 +21,7 @@ const PopUp = ({ title, handleExit, children, bottom }) => {
           <Title>{title}</Title>
         </Header>
         <Popupcontents>{children}</Popupcontents>
-        {bottom ? <Botton>{bottom}</Botton> : ""}
+        {bottom ? <Botton>{bottom}</Botton> : ""}dddd
       </Popupcontainer>
     </Popup>
   );
