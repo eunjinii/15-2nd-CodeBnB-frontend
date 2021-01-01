@@ -9,7 +9,7 @@ const PopUp = ({ title, handleExit, children, bottom }) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     backgroundRef.current.addEventListener("mousedown", handleClickOutside);
-  });
+  }, []);
 
   const handleClickOutside = event => {
     event.stopPropagation();
