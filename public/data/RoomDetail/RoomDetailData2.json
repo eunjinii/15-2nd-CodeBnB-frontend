@@ -1,0 +1,118 @@
+{
+  "home_id": 2,
+  "name": "#코로나대비#완전방역#강남구 도보5분거리#행복숙박",
+  "address": "강남구,서울,한국",
+  "images": [
+    "https://images.unsplash.com/photo-1584116831190-7a5b2765a30a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjd8fGJlZCUyMHJvb218ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/flagged/photo-1600002368144-444430d3f3ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fGJhdGhyb29tfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1545454760-a8e55231441c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDh8fGxpdmluZyUyMHJvb218ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1556037843-347ddff9f4b0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8a2l0Y2hlbnxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "https://images.unsplash.com/photo-1564829439675-0eec72f0b695?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8YmFsY29ueXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+  ],
+  "capacity": 4,
+  "options": {
+    "침실": 1,
+    "침대": 1,
+    "욕실": 0
+  },
+  "home_type": "집 전체",
+  "description": "창조적인 animation과 css를 좋아하고 무엇이든 구현할 수 있다고 믿는 프론트엔드 개발자. 아름다운 UI를 구현하는 것을 좋아한다. 해외에서 다양한 문화를 겪으면서 키운 커뮤니케이션 스킬을 바탕으로 같이 즐겁게 일하고 싶은 개발자가 되기 위해 노력한다. 끊임없는 배움은 개발자의 숙명이라 생각하고 지식을 넓혀가는 것에 즐거움을 느낀다.\n",
+  "home_building": "아파트",
+  "host": {
+    "first_name": "승재",
+    "last_name": "김",
+    "contact": "01089817891",
+    "description": "ㅎㅇ",
+    "singup_date": "2020-12-13T00:00:00Z",
+    "host_profile": "https://i0.wp.com/prikachi.com/wp-content/uploads/2020/07/DPP1.jpg",
+    "is_valid": true
+  },
+  "facilities_detail": {
+    "욕실": ["온수", "샴푸"],
+    "침실 및 세탁 시설": ["옷걸이", "필수품목(침대시트, 베개)", "건조기", "다리미"],
+    "주방 및 식당": [
+      "식기류",
+      "기본 조리도구(냄비, 후라이팬, 기름, 소금, 후추)",
+      "기본 조리도구(냄비, 후라이팬, 기름, 소금, 후추)"
+    ],
+    "위치 특성": ["게스트 전용 출입문(별도의 출입로 또는 건물 입구)"],
+    "서비스": ["디지털 도어록(게스트가 현관문 비밀번호를 입력하여 직접 체크인 합니다)"]
+  },
+  "facilities": [
+    "온수",
+    "샴푸",
+    "옷걸이",
+    "필수품목(침대시트, 베개)",
+    "건조기",
+    "다리미",
+    "식기류",
+    "기본 조리도구(냄비, 후라이팬, 기름, 소금, 후추)",
+    "기본 조리도구(냄비, 후라이팬, 기름, 소금, 후추)",
+    "게스트 전용 출입문(별도의 출입로 또는 건물 입구)",
+    "디지털 도어록(게스트가 현관문 비밀번호를 입력하여 직접 체크인 합니다)"
+  ],
+
+  "rules": {
+    "숙소 이용 규칙": [
+      "체크인 시간",
+      "체크아웃 시간",
+      "유아(만 2세 미만)에게 적합함",
+      "어린이(2~12세)에게 적합함",
+      "반려동물 동반 가능",
+      "파티나 이벤트 가능",
+      "파티나 이벤트 금지"
+    ],
+    "건강과 안전": ["일산화탄소 경보기", "화재경보기"],
+    "기타 알아두어야 할 사항": [
+      "보증금 - 숙소를 파손할 경우 추가 금액이 부과될 수 있습니다.",
+      "숙소에 반려동물 있음",
+      "건물 내 주차 불가",
+      "숙소에 감시 또는 녹화 장치 설치",
+      "숙소에 무기 있음"
+    ],
+    "환불 정책": ["체크인 30일 전 까지 취소하시면 전액이 환불됩니다."]
+  },
+
+  "home_latitude": "37.504660",
+  "home_longitutde": "127.038682",
+  "price": {
+    "1박비용": 44000,
+    "1인당가격증가율": 11000,
+    "청소비": 12000,
+    "서비스수수료": 10000,
+    "숙박세와수수료": 0
+  },
+  "home_region": {
+    "region_name": "강남구",
+    "region_latitude": "37.492465",
+    "region_longtitude": "127.068818",
+    "region_radius_m": 8000,
+    "region_zoom": 13
+  },
+  "room_info": [
+    {
+      "room_name": "1번 침실",
+      "bed_info": [
+        {
+          "bed_name": "킹 침대",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "room_name": "2번 침실",
+      "bed_info": [
+        {
+          "bed_name": "싱글 침대",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "reservations": [
+    {
+      "check_in": "2020-12-31T00:00:00Z",
+      "check_out": "2021-02-24T00:00:00Z"
+    }
+  ]
+}

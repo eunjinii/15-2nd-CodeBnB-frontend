@@ -73,6 +73,13 @@
             display: flex;
             justify-content: flex-start;
             font-size: 14px;
+
+            .redstar {
+              width: 14px;
+              height: 14px;
+              margin-right: 5px;
+            }
+
             .score {
               font-weight: 700;
             }
@@ -90,40 +97,29 @@
             .headerShereIconBox {
               display: flex;
               justify-content: flex-start;
-              padding: 8px;
               align-items: center;
 
-              .headerIconBtn {
-                cursor: pointer !important;
-                display: inline-block !important;
-                margin: 0px -8px !important;
-                position: relative !important;
-                text-align: center !important;
-                width: auto !important;
-                touch-action: manipulation !important;
-                font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
-                font-size: 14px !important;
-                line-height: 18px !important;
-                font-weight: 600 !important;
-                border-radius: 8px !important;
-                outline: none !important;
-                padding: 8px !important;
-                transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
-                  transform 0.1s ease 0s !important;
-                border: none !important;
-                background: transparent !important;
-                color: rgb(34, 34, 34) !important;
-                text-decoration: underline !important;
+              .headerIconBtnShare {
+                cursor: pointer;
+                background-color: #fff;
+                border: none;
 
-                .star {
-                  .headerShereIcon {
-                    width: 16px;
-                    height: 16px;
+                .shareBox {
+                  display: flex;
+                  justify-content: flex-start;
+                  .star {
+                    .headerShereIcon {
+                      width: 16px;
+                      height: 16px;
+                      margin-right: 5px;
+                    }
                   }
-                }
 
-                .starText {
-                  .headerShereIconText {
+                  .starText {
+                    font-weight: 900;
+                    font-size: 14px;
+                    .headerShereIconText {
+                    }
                   }
                 }
               }
@@ -133,39 +129,31 @@
               display: flex;
               justify-content: flex-start;
               align-items: center;
-              padding: 8px;
 
-              .headerIconBtn {
-                cursor: pointer !important;
-                display: inline-block !important;
-                margin: 0px -8px !important;
-                position: relative !important;
-                text-align: center !important;
-                width: auto !important;
-                touch-action: manipulation !important;
-                font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
-                font-size: 14px !important;
-                line-height: 18px !important;
-                font-weight: 600 !important;
-                border-radius: 8px !important;
-                outline: none !important;
-                padding: 8px !important;
-                transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
-                  transform 0.1s ease 0s !important;
-                border: none !important;
-                background: transparent !important;
-                color: rgb(34, 34, 34) !important;
-                text-decoration: underline !important;
+              .headerIconBtnStorage {
+                cursor: pointer;
+                background-color: #fff;
+                border: none;
 
-                .heart {
-                  .headerStorageIcon {
-                    width: 16px;
-                    height: 16px;
+                .storageBox {
+                  display: flex;
+                  justify-content: flex-start;
+
+                  .heart {
+                    display: flex;
+                    align-items: center;
+                    .headerStorageIcon {
+                      width: 16px;
+                      height: 16px;
+                      margin-right: 5px;
+                    }
                   }
-                }
 
-                .heartText {
-                  .headerStorageIconText {
+                  .heartText {
+                    font-weight: 900;
+                    font-size: 14px;
+                    .headerStorageIconText {
+                    }
                   }
                 }
               }
@@ -183,7 +171,7 @@
       .imgSliderBox {
         padding-left: 80px !important;
         padding-right: 80px !important;
-        padding-top: 10px;
+        padding-top: 24px;
         max-width: 1280px !important;
         display: flex;
         justify-content: center;
@@ -229,12 +217,63 @@
             object-fit: cover;
           }
 
-          .imgSmall4 {
-            width: 280px;
-            height: 285px;
-            border: 0 solid transparent;
-            border-width: 0 10px 10px 0;
-            object-fit: cover;
+          .grid12-6 {
+            position: relative;
+            .imgSmall4 {
+              width: 280px;
+              height: 285px;
+              border: 0 solid transparent;
+              border-width: 0 10px 10px 0;
+              object-fit: cover;
+            }
+            .inner_box {
+              .imgIcon {
+                width: 12px;
+                height: 12px;
+                margin-right: 8px;
+              }
+            }
+          }
+
+          .grid12-6 .inner_box {
+            position: absolute;
+            top: 77%;
+            left: 50%;
+            transform: translate(-25%, -20%);
+            text-align: center;
+          }
+          .grid12-6 .inner_box h2 {
+            font-family: arial;
+            text-align: center;
+            font-size: 26px;
+            font-weight: normal;
+            color: #777;
+          }
+          .grid12-6 .inner_box button {
+            background-color: white;
+            color: $font-color-black;
+            border: 1px solid $font-color-black;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            padding: 7px 13px !important;
+            font-size: 14px;
+          }
+
+          .clickBtn {
+            background-color: white;
+            color: $font-color-black;
+            border: 1px solid $font-color-black;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            padding: 13px 23px !important;
+            font-size: 16px;
+          }
+
+          .clickBtn:hover {
+            background-color: $border-color;
+          }
+
+          .imgMore {
           }
         }
       }
@@ -314,6 +353,7 @@
 
                   .explainSubheading {
                     font-size: 14px;
+                    margin-top: 8px;
                   }
                 }
               }
@@ -328,6 +368,24 @@
               padding-bottom: 48px;
               line-height: 24px !important; //행간
               word-break: break-word !important; //글이 길어질 때 줄바꿈
+
+              .moreReadBtn {
+                border-width: 0px;
+                cursor: pointer;
+                font-weight: 900;
+                text-decoration: underline;
+              }
+              .moreBtn {
+                width: 1032px;
+                flex: 1 1 auto !important;
+                overflow: auto !important;
+                padding: 24px !important;
+                .modalContent {
+                  width: 600px;
+                  height: 600px;
+                  padding: 40px;
+                }
+              }
             }
           }
 
@@ -340,6 +398,9 @@
               font-size: 22px;
               font-weight: 700;
               padding: 0px 0px 24px;
+              .bedContainer {
+                float: left;
+              }
             }
           }
 
@@ -354,22 +415,33 @@
                 padding: 0px 0px 24px;
               }
 
-              .facilitiesContainer {
-                display: flex;
-                justify-content: flex-start;
-                padding: 0px 0px 16px;
+              .clickBtn {
+                background-color: white;
+                color: $font-color-black;
+                border: 1px solid $font-color-black;
+                border-radius: 8px;
+                font-weight: 600 !important;
+                padding: 13px 23px !important;
+                font-size: 16px;
+              }
 
-                .facilitiesBox {
-                  .facilitiesIcon {
-                    width: 24px;
-                    height: 24px;
-                    margin-right: 16px;
-                  }
-                }
+              .facilitiesMoreBtn {
+                background-color: white;
+                color: $font-color-black;
+                border: 1px solid $font-color-black;
+                border-radius: 8px;
+                font-weight: 600 !important;
+                padding: 13px 23px !important;
+                font-size: 16px;
+                background-color: $border-color;
+              }
 
-                .item {
-                  padding: 0px 0px 16px;
-                }
+              .facilitiesMore {
+                width: 780px;
+                height: 800px;
+                // flex: 1 1 auto !important;
+                // overflow: auto !important;
+                padding: 24px;
               }
             }
           }
@@ -397,9 +469,9 @@
             padding-bottom: 32px;
 
             .reviewScoreTitleIcon {
-              .reviewScoreIcon {
-                width: 22px;
-                height: 22px;
+              .redStar {
+                width: 14px;
+                height: 14px;
                 margin-right: 8px !important;
               }
               .reviewScore {

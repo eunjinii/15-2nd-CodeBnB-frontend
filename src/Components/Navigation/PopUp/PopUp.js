@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { flexCenter, flexAlignCenter } from "../../styles/Theme";
+import { flexCenter, flexAlignCenter } from "../../../styles/Theme";
 const PopUp = ({ title, handleExit, children, bottom }) => {
   const popUpRef = useRef();
   const backgroundRef = useRef();
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     backgroundRef.current.addEventListener("mousedown", handleClickOutside);
   });
   const handleClickOutside = event => {
-    event.stopPropagation();
     if (popUpRef.current === null || !popUpRef.current.contains(event.target)) {
+      document.body.style.overflow = "unset";
       handleExit();
     }
   };
@@ -17,11 +18,18 @@ const PopUp = ({ title, handleExit, children, bottom }) => {
     <Popup ref={backgroundRef}>
       <Popupcontainer ref={popUpRef}>
         <Header>
-          <Exitbutton onClick={() => handleExit()} alt="exit" src="/images/Components/close-button.png" />
-          <Title>{title}</Title>
+          <img
+            onClick={() => {
+              handleExit();
+              document.body.style.overflow = "unset";
+            }}
+            alt="exit"
+            src="/images/Components/close-button.png"
+          />
+          <div>{title}</div>
         </Header>
         <Popupcontents>{children}</Popupcontents>
-        {bottom ? <Botton>{bottom}</Botton> : ""}dddd
+        <Botton>{bottom}</Botton>
       </Popupcontainer>
     </Popup>
   );
@@ -49,17 +57,17 @@ const Header = styled.header`
   height: 65px;
   padding: 4px 24px 0 24px;
   border-bottom: 1px solid #ddd;
-`;
-const Exitbutton = styled.img`
-  position: absolute;
-  left: 24px;
-  top: 27px;
-  width: 12px;
-  height: 12px;
-  cursor: pointer;
-`;
-const Title = styled.div`
-  font-size: 18px;
+  img {
+    position: absolute;
+    left: 24px;
+    top: 27px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+  }
+  div {
+    font-size: 18px;
+  }
 `;
 const Popupcontents = styled.div`
   position: relative;

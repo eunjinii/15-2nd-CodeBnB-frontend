@@ -6,6 +6,7 @@ import HouseExplain from "./HouseExplain";
 import BedType from "./BedType";
 import UserReview from "./UserReview";
 import Facility from "./Facility";
+import PopUp from "../../Components/Navigation/PopUp/PopUp";
 
 const CheckLists = [
   {
@@ -78,16 +79,6 @@ const bedTypes = [
     cardTextTitle: "1번 침실",
     cardTextContents: "퀸사이즈 침대 3개",
   },
-  {
-    bedAmount: ["images/RoomDetail/noun_Bed_3667468.png", "images/RoomDetail/noun_Bed_3667468.png"],
-    cardTextTitle: "2번 침실",
-    cardTextContents: "싱글사이즈 침대 2개",
-  },
-  {
-    bedAmount: ["images/RoomDetail/noun_Bed_3667468.png"],
-    cardTextTitle: "3번 침실",
-    cardTextContents: "싱글사이즈 침대 1개",
-  },
 ];
 
 const userReviews = [
@@ -128,11 +119,19 @@ class RoomDetail extends Component {
     super();
     this.state = {
       house: "",
+      isModalOn: false,
+      reviewModal1: false,
+      reviewModa2l: false,
+      reviewModal3: false,
     };
   }
 
+  handleModal = name => {
+    this.setState({ [name]: !this.state[name] });
+  };
+
   componentDidMount = () => {
-    fetch("/data/RoomDetail/RoomDetailData.json")
+    fetch("/data/RoomDetail/RoomDetailData2.json")
       .then(result => result.json())
       .then(result => {
         this.setState({
@@ -152,29 +151,42 @@ class RoomDetail extends Component {
               <div className="titleName">{house.name}</div>
               <div className="titleBox">
                 <div className="headerScorePlace">
-                  <div className="score">4.86</div>
-                  <div className="place">{house.address}</div>
+                  <img className="redstar" src="images\RoomDetail\redStar.png" alt="리뷰 별점" />
+                  <div className="score">{house.capacity} &nbsp;·</div>
+                  <div className="place">&nbsp; {house.address}</div>
                 </div>
 
                 <div className="headerIconLine">
                   <div className="headerShereIconBox">
-                    <button className="headerIconBtn">
-                      <div className="star">
-                        <img className="headerShereIcon" src="images\RoomDetail\noun_Share_3122430.png" alt="" />
-                      </div>
-                      <div className="starText">
-                        <div className="headerShereIconText">공유하기</div>
+                    <button className="headerIconBtnShare">
+                      <div className="shareBox">
+                        <div className="star">
+                          <img
+                            className="headerShereIcon"
+                            src="images\RoomDetail\noun_Share_3122430.png"
+                            alt="공유하기"
+                          />
+                        </div>
+                        <div className="starText">
+                          <div className="headerShereIconText">공유하기</div>
+                        </div>
                       </div>
                     </button>
                   </div>
 
                   <div className="headerStorageIconBox">
-                    <button className="headerIconBtn">
-                      <div className="heart">
-                        <img className="headerStorageIcon" src="images\RoomDetail\noun_Heart_771495.png" alt="" />
-                      </div>
-                      <div className="heartText">
-                        <div className="headerStorageIconText">저장</div>
+                    <button className="headerIconBtnStorage">
+                      <div className="storageBox">
+                        <div className="heart">
+                          <img
+                            className="headerStorageIcon"
+                            src="images\RoomDetail\noun_Heart_771495.png"
+                            alt="좋아요목록"
+                          />
+                        </div>
+                        <div className="heartText">
+                          <div className="headerStorageIconText">저장</div>
+                        </div>
                       </div>
                     </button>
                   </div>
@@ -196,9 +208,9 @@ class RoomDetail extends Component {
                 <img className="imgSmall3" src={house.images?.[4]} alt="" />
                 <div class="grid12-6">
                   <img className="imgSmall4" src={house.images?.[2]} alt="" />
-                  <div class="inner_box">
+                  <div className="inner_box">
                     <button>
-                      <img className="imgIcon" src="\images\RoomDetail\dot.png" alt="" />
+                      <img className="imgIcon" src="images\RoomDetail\dot.png" alt="" />
                       사진 모두 보기
                     </button>
                   </div>
@@ -216,11 +228,12 @@ class RoomDetail extends Component {
                 <div className="middleTitle">
                   <div className="middleTitleBox">
                     <div className="introduction">
-                      {house.host?.host_name}님이 호스팅하는 {house.home_type}
+                      {house.host?.last_name}
+                      {house.host?.first_name}님이 호스팅하는 {house.home_type}
                     </div>
                     <div className="explain">
-                      침실 {house.options?.bedroom}개&nbsp;·&nbsp;침대 {house.options?.bed}개&nbsp;·&nbsp;욕실
-                      {house.options?.bathroom}개
+                      침실 {house.options?.침실}개&nbsp;·&nbsp;침대 {house.options?.침대}개&nbsp;·&nbsp;욕실
+                      {house.options?.욕실}개
                     </div>
                   </div>
                   <div className="middleTitleBoxImg">
@@ -245,37 +258,51 @@ class RoomDetail extends Component {
                 <div className="hostIntroduceBox">
                   <div className="hostIntroduce">
                     {house.description}
-                    {/* <Link to="./RoomDetail" onClick={this.modalOn} className="TitleImgMore">
-                      더읽기입니당 모달들어갈거에요
-                    </Link> */}
-
-                    <button onClick={this.modalOn} type="button">
-                      버튼입니다
+                    ...
+                    <button className="moreReadBtn" onClick={() => this.handleModal("isModalOn")} type="button">
+                      더 읽기
                     </button>
+                    <div className="moreBtn">
+                      {this.state.isModalOn ? (
+                        <PopUp title="숙소 설명" handleExit={() => this.handleModal("isModalOn")}>
+                          <div className="modalContent">{house.description}</div>
+                        </PopUp>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
 
                 <div className="bedType">
                   <div className="bedTitle">침대/침구 유형</div>
-                  {bedTypes.map(bedType => {
+                  {house.room_info?.map(bedType => {
                     return (
-                      <BedType
-                        bedAmount={bedType.bedAmount}
-                        cardTextTitle={bedType.cardTextTitle}
-                        cardTextContents={bedType.cardTextContents}
-                      />
+                      <div className="bedContainer">
+                        <BedType room_name={bedType.room_name} bed_info={bedType.bed_info} />
+                      </div>
                     );
                   })}
                 </div>
                 <div className="facilities">
                   <div className="facilitiesTitleBox">
                     <div className="facilitiesTitle">편의시설</div>
-
                     {house.facility_list?.map(facility => {
                       return <Facility facility={facility} />;
                     })}
 
-                    <button class="clickBtn clickBtn">편의시설 40개 모두 보기</button>
+                    <button class="facilitiesMoreBtn" onClick={() => this.handleModal("reviewModal1")} type="button">
+                      편의시설 40개 모두 보기
+                    </button>
+                    <div className="facilitiesBtn">
+                      {this.state.reviewModal1 ? (
+                        <PopUp title="편의시설" handleExit={() => this.handleModal("reviewModal1")}>
+                          <div className="facilitiesMore">{house.capacity}</div>
+                        </PopUp>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -287,23 +314,21 @@ class RoomDetail extends Component {
                 <div className="review"></div>
                 <div className="reviewScoreTitle">
                   <div className="reviewScoreTitleIcon">
-                    <img
-                      className="reviewScoreIcon"
-                      src="images\RoomDetail\noun_Star_1187905.png"
-                      alt="reviewStarIcon"
-                    />
+                    <img className="redStar" src="images\RoomDetail\redStar.png" alt="별점 아이콘" />
                   </div>
-                  <div className="reviewScore">4.90점(후기 39개)</div>
+                  <div className="reviewScore">{house.capacity}점(후기 39개)</div>
                 </div>
-
                 <div className="checkList">
                   {CheckLists.map(checkList => {
                     return (
-                      <Review checkList={checkList.checkList} poster={checkList.scoreValue} score={checkList.score} />
+                      <Review
+                        checkList={checkList.checkList}
+                        scoreValue={checkList.scoreValue}
+                        score={checkList.score}
+                      />
                     );
                   })}
                 </div>
-
                 <div className="gridContainer">
                   {userReviews.map(userReview => {
                     return (
@@ -316,7 +341,6 @@ class RoomDetail extends Component {
                     );
                   })}
                 </div>
-
                 <button className="clickBtn clickBtn reviewBtn">후기 49개 모두 보기</button>
               </div>
 

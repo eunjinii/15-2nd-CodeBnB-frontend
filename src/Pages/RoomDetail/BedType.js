@@ -3,7 +3,7 @@ import "./BedType.scss";
 
 class BedType extends Component {
   render() {
-    const { bedAmount, cardTextTitle, cardTextContents } = this.props;
+    const { room_name, bed_info } = this.props;
     return (
       <>
         <div className="cards">
@@ -11,12 +11,18 @@ class BedType extends Component {
             <div className="cardSuburb">
               <div className="cardIcon">
                 <div className="cardIconItem">
-                  <img className="cardIconItemImg" src={bedAmount} alt="userImg" />
+                  {[...Array(bed_info[0]?.count)].map((n, index) => {
+                    return (
+                      <img className="cardIconItemImg" src="images/RoomDetail/noun_Bed_3667468.png" alt="userImg" />
+                    );
+                  })}
                 </div>
               </div>
               <div className="cardText">
-                <div className="cardTextTitle">{cardTextTitle}</div>
-                <div className="cardTextContents">{cardTextContents}</div>
+                <div className="cardTextTitle">{room_name}</div>
+                <div className="cardTextContents">
+                  {bed_info[0]?.bed_name}&nbsp;{bed_info[0]?.count}개
+                </div>
               </div>
             </div>
           </div>
