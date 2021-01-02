@@ -69,18 +69,6 @@ const HouseExplains = [
   },
 ];
 
-const bedTypes = [
-  {
-    bedAmount: [
-      "images/RoomDetail/noun_Bed_3667468.png",
-      "images/RoomDetail/noun_Bed_3667468.png",
-      "images/RoomDetail/noun_Bed_3667468.png",
-    ],
-    cardTextTitle: "1번 침실",
-    cardTextContents: "퀸사이즈 침대 3개",
-  },
-];
-
 const userReviews = [
   {
     userImg: "images/RoomDetail/jsLove.PNG",

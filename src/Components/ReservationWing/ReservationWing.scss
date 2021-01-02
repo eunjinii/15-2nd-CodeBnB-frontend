@@ -1,0 +1,176 @@
+@import "../../styles/common.scss";
+
+.ReservationContainer {
+  margin: 100px;
+  width: 365px;
+  // height: 542.54px;
+  border-radius: 10px;
+  border: 1px solid#bdbdbd;
+  box-shadow: 10px 10px 20px rgba(216, 216, 216, 0.733);
+
+  .topBox {
+    padding: 24px;
+    .reservationInfo {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 24px;
+      .infoDescription {
+        display: block;
+        font-size: 22px;
+      }
+      .infoPrice {
+        display: none;
+      }
+
+      .reservationInfoBox {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .redStar {
+          width: 14px;
+          height: 14px;
+          margin-right: 8px !important;
+        }
+        .infoScore {
+        }
+      }
+    }
+
+    .middleBox {
+      font-size: 12px;
+      margin-bottom: 16px;
+
+      .middleCheckText {
+      }
+      .middleCheckBtn {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+    }
+
+    .checkInBox {
+      .checkContainer {
+        width: 315px;
+        height: 111.98px;
+        margin-bottom: 16px;
+
+        .checkContainerTop {
+          display: flex;
+          justify-content: flex-start;
+
+          .checkInDate {
+            width: 160.52px;
+            height: 55.99px;
+            padding: 12px;
+            border: 1px solid#bdbdbd;
+            border-radius: 10px 0px 0px 0px;
+
+            .checkInDateText {
+              font-weight: 700;
+            }
+
+            .checkInDatePlus {
+            }
+          }
+          .checkOutDate {
+            width: 160.52px;
+            height: 55.99px;
+            padding: 12px;
+            border: 1px solid#bdbdbd;
+            border-radius: 0px 10px 0px 0px;
+
+            .checkOutDateText {
+              font-weight: 700;
+            }
+
+            .checkOutDatePlus {
+            }
+          }
+        }
+
+        .checkContainerBottom {
+          .checkInNum {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 36px 10px 12px;
+            border: 1px solid#bdbdbd;
+            border-radius: 0px 0px 10px 10px;
+            .checkInTopBox {
+              .checkPersonnel {
+              }
+              .checkGuest {
+              }
+            }
+
+            .checkInBottomBox {
+              .guestIcon {
+                width: 14px;
+                height: 14px;
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+      }
+      .checkBtn {
+        background-color: #ff264e;
+        color: white;
+        width: 315px;
+        height: 48px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        border: 0px;
+      }
+
+      .reservationSubmit {
+        display: none;
+      }
+
+      .checkBtnContents {
+        .checkContentsText {
+          padding: 16px;
+          font-size: 14px;
+          display: flex;
+          justify-content: center;
+        }
+        .checkContentsBox {
+          border-bottom: 1px solid#bdbdbd;
+
+          .contentsRoomBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsPriceBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsCleaningBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsServiceBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+          }
+          .contentsRoomBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+          }
+        }
+      }
+      .totalPriceBox {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        font-weight: 700;
+      }
+    }
+  }
+}
