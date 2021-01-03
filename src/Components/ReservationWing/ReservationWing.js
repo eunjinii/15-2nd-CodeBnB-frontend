@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from " react-dates ";
+// import " react-dates / lib / css / _datepicker.css ";
+
 // import { Link } from "react-router-dom";
 import "./ReservationWing.scss";
 
@@ -10,11 +13,11 @@ class ReservationWing extends Component {
   //   };
   // }
 
-  reservationCheck = () => {
-    //달력열리게하기!
-    // document.getElementsByClassName.infoDescription[0].style.display = "none";
-    // document.getElementsByClassName.infoPrice[0].style.display = "block";
-  };
+  // reservationCheck = () => {
+  //   //달력열리게하기!
+  //   // document.getElementsByClassName.infoDescription[0].style.display = "none";
+  //   // document.getElementsByClassName.infoPrice[0].style.display = "block";
+  // };
 
   render() {
     return (
@@ -39,6 +42,16 @@ class ReservationWing extends Component {
                   <div className="checkInDate">
                     <div className="checkInDateText">체크인</div>
                     <div className="checkInDatePlus">날짜 추가</div>
+
+                    {/* <DateRangePicker
+                      startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                      startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                      endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                      endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                      onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                      focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                      onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+                    /> */}
                   </div>
                   <div className="checkOutDate">
                     <div className="checkOutDateText">체크아웃</div>
@@ -52,7 +65,7 @@ class ReservationWing extends Component {
                       <div className="checkGuest">게스트 1명</div>
                     </div>
                     <div className="checkInBottomBox">
-                      <img className="guestIcon" src="images\RoomDetail\redStar.png" alt="인원 버튼" />
+                      <img className="guestIcon" src="images/Components/downArrow.png" alt="인원 버튼" />
                     </div>
                   </div>
                 </div>

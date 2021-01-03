@@ -33,6 +33,7 @@
           margin-right: 8px !important;
         }
         .infoScore {
+          font-size: 14px;
         }
       }
     }
@@ -68,9 +69,12 @@
 
             .checkInDateText {
               font-weight: 700;
+              font-size: 10px;
+              margin-bottom: 5px;
             }
 
             .checkInDatePlus {
+              font-size: 14px;
             }
           }
           .checkOutDate {
@@ -82,9 +86,12 @@
 
             .checkOutDateText {
               font-weight: 700;
+              font-size: 10px;
+              margin-bottom: 5px;
             }
 
             .checkOutDatePlus {
+              font-size: 14px;
             }
           }
         }
@@ -93,13 +100,16 @@
           .checkInNum {
             display: flex;
             justify-content: space-between;
-            padding: 12px 36px 10px 12px;
+            padding: 12px 12px 10px 12px;
             border: 1px solid#bdbdbd;
             border-radius: 0px 0px 10px 10px;
             .checkInTopBox {
               .checkPersonnel {
+                font-size: 10px;
+                margin-bottom: 5px;
               }
               .checkGuest {
+                font-size: 14px;
               }
             }
 
@@ -107,14 +117,14 @@
               .guestIcon {
                 width: 14px;
                 height: 14px;
-                margin-top: 10px;
+                margin-top: 5px;
               }
             }
           }
         }
       }
       .checkBtn {
-        background-color: #ff264e;
+        background-color: #e61e53;
         color: white;
         width: 315px;
         height: 48px;
