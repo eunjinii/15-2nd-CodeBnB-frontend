@@ -2,23 +2,38 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Login from "./Login/Login";
 import Signup from "./Signup/Signup";
+import SelectOption from "./SelectOption/SelectOption";
 import styled from "styled-components";
 import { flexAlignCenter, flexCenter, flexJustCenter } from "../../styles/Theme";
 import { ReactComponent as HamburgerIcon } from "./hamburger.svg";
-import DatePicker from "../DatePicker/DatePicker";
 
 const TOGGLE_HAMBURGER = "toggleHamburger";
 const TOGGLE_LOGIN = "toggleLogin";
 const TOGGLE_SIGNUP = "toggleSignup";
+const LOCATION = "isLocationClicked";
+const CALENDAR = "isCalendarClicked";
+const GUEST = "isGuestClicked";
 
-const Navigation = () => {
+const Navigation = ({ state, stateSetter, fetchData }) => {
+  const { location, startDate, endDate, adult, child, infant } = state;
+  const { setLocation, setStartDate, setEndDate, setAdult, setChild, setInfant } = stateSetter;
+
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
   const [isLogInClicked, setIsLogInClicked] = useState(false);
   const [isSignupClicked, setIsSignupClicked] = useState(false);
   const [requireBirthday, setRequireBirthday] = useState(false);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [isMenuClicked, setIsMenuClicked] = useState({
+    isLocationClicked: false,
+    isCalendarClicked: false,
+    isGuestClicked: false,
+  });
+
   const hamburgerRef = useRef();
+  const locationRef = useRef();
+  const calendarRef = useRef();
+  const guestRef = useRef();
+  const menuRef = useRef();
+  const searchRef = useRef();
   const history = useHistory();
 
   const TOGGLE_SET = {
@@ -28,13 +43,27 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  });
 
   const handleClickOutside = event => {
-    if (!hamburgerRef.current.contains(event.target)) {
+    const shouldHamburgerClose = !hamburgerRef.current.contains(event.target);
+    const isOutsideClicked =
+      !locationRef.current.contains(event.target) &&
+      !calendarRef.current.contains(event.target) &&
+      !guestRef.current.contains(event.target) &&
+      !menuRef.current.contains(event.target) &&
+      !searchRef.current.contains(event.target);
+    const shouldLocationClose = isMenuClicked[LOCATION] && isOutsideClicked;
+    const shouldCalendarClose = isMenuClicked[CALENDAR] && isOutsideClicked;
+    const shouldGuestClose = isMenuClicked[GUEST] && isOutsideClicked;
+
+    if (shouldHamburgerClose) {
       setIsHamburgerClicked(false);
+    }
+    if (shouldLocationClose || shouldCalendarClose || shouldGuestClose) {
+      toggleMenu();
     }
   };
 
@@ -44,10 +73,32 @@ const Navigation = () => {
     setState();
   };
 
+  const toggleMenu = modifier => {
+    const newObj = { ...isMenuClicked };
+    for (let i in newObj) {
+      newObj[i] = false;
+    }
+    if (modifier) newObj[modifier] = true;
+    setIsMenuClicked(newObj);
+  };
+
   const goToEitherSignupOrLogin = bool => {
     setRequireBirthday(false);
     setIsSignupClicked(bool);
     setIsLogInClicked(!bool);
+  };
+
+  const clickSearch = () => {
+    if (!location) {
+      toggleMenu(LOCATION);
+    } else if (!startDate || !endDate) {
+      toggleMenu(CALENDAR);
+    } else if (adult + child + infant === 0) {
+      toggleMenu(GUEST);
+    } else {
+      toggleMenu();
+      fetchData();
+    }
   };
 
   return (
@@ -70,17 +121,29 @@ const Navigation = () => {
             <img src="/images/Navigation/airbnb.png" alt="codebnb" />
             <span>codebnb</span>
           </Logosection>
-          <Datesection>
-            <DatePicker
-              start={startDate}
-              end={endDate}
-              updateStartDate={setStartDate}
-              updateEndDate={setEndDate}
-              blockedDates={["2021-02-14", "2021-02-20", "2021-02-28"]}
-              gapBetweenMonth={50}
-              clearPosition={90}
-            />
-          </Datesection>
+          <SelectOption
+            locationRef={locationRef}
+            calendarRef={calendarRef}
+            guestRef={guestRef}
+            menuRef={menuRef}
+            searchRef={searchRef}
+            startDate={startDate}
+            setStartDate={setStartDate}
+            endDate={endDate}
+            setEndDate={setEndDate}
+            location={location}
+            setLocation={setLocation}
+            handleClick={handleClick}
+            isMenuClicked={isMenuClicked}
+            toggleMenu={toggleMenu}
+            adult={adult}
+            setAdult={setAdult}
+            child={child}
+            setChild={setChild}
+            infant={infant}
+            setInfant={setInfant}
+            clickSearch={clickSearch}
+          />
           <Hamburgersection>
             <div className="host">호스트 되기</div>
             <div onClick={() => handleClick(TOGGLE_HAMBURGER)} className="hamburgerMenu" ref={hamburgerRef}>
@@ -122,7 +185,7 @@ const Navigation = () => {
 export default Navigation;
 
 const NavSpaceTaker = styled.div`
-  height: 90px;
+  height: 100px;
 `;
 
 const NavWrapper = styled.div`
@@ -131,7 +194,7 @@ const NavWrapper = styled.div`
   top: 0;
   background-color: white;
   width: 100%;
-  height: 90px;
+  height: 100px;
 `;
 
 const Nav = styled.nav`
@@ -156,13 +219,6 @@ const Logosection = styled.section`
     color: ${props => props.theme.primaryColor};
     letter-spacing: -0.5px;
   }
-`;
-
-const Datesection = styled.section`
-  width: 850px;
-  height: 65px;
-  border-radius: 40px;
-  background-color: red;
 `;
 
 const Hamburgersection = styled.section`
