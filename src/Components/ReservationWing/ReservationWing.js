@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from " react-dates ";
 // import " react-dates / lib / css / _datepicker.css ";
-
 // import { Link } from "react-router-dom";
 import "./ReservationWing.scss";
 
