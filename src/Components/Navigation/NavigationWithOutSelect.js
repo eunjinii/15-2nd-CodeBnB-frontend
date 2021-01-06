@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Login from "./Login/Login";
 import Signup from "./Signup/Signup";
-import SelectOption from "./SelectOption/SelectOption";
 import styled from "styled-components";
 import { flexAlignCenter, flexCenter, flexJustCenter } from "../../styles/Theme";
 import { ReactComponent as HamburgerIcon } from "./hamburger.svg";
@@ -10,30 +9,13 @@ import { ReactComponent as HamburgerIcon } from "./hamburger.svg";
 const TOGGLE_HAMBURGER = "toggleHamburger";
 const TOGGLE_LOGIN = "toggleLogin";
 const TOGGLE_SIGNUP = "toggleSignup";
-const LOCATION = "isLocationClicked";
-const CALENDAR = "isCalendarClicked";
-const GUEST = "isGuestClicked";
 
-const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navigationPadding = 20 }) => {
-  const { location, startDate, endDate, adult, child, infant } = state;
-  const { setLocation, setStartDate, setEndDate, setAdult, setChild, setInfant } = stateSetter;
-
+const Navigation = ({ navigationPadding = 190 }) => {
   const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
   const [isLogInClicked, setIsLogInClicked] = useState(false);
   const [isSignupClicked, setIsSignupClicked] = useState(false);
   const [requireBirthday, setRequireBirthday] = useState(false);
-  const [isMenuClicked, setIsMenuClicked] = useState({
-    isLocationClicked: false,
-    isCalendarClicked: false,
-    isGuestClicked: false,
-  });
-
   const hamburgerRef = useRef();
-  const locationRef = useRef();
-  const calendarRef = useRef();
-  const guestRef = useRef();
-  const menuRef = useRef();
-  const searchRef = useRef();
   const history = useHistory();
 
   const TOGGLE_SET = {
@@ -48,28 +30,10 @@ const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navig
   });
 
   const handleClickOutside = event => {
-    const isAllRefPresent =
-      hamburgerRef.current !== null &&
-      locationRef.current !== null &&
-      calendarRef.current !== null &&
-      locationRef.current !== null &&
-      guestRef.current !== null;
-    if (isAllRefPresent) {
-      const shouldHamburgerClose = !hamburgerRef.current.contains(event.target);
-      const isOutsideClicked =
-        !locationRef.current.contains(event.target) &&
-        !calendarRef.current.contains(event.target) &&
-        !guestRef.current.contains(event.target) &&
-        !menuRef.current.contains(event.target) &&
-        !searchRef.current.contains(event.target);
-      const shouldLocationClose = isMenuClicked[LOCATION] && isOutsideClicked;
-      const shouldCalendarClose = isMenuClicked[CALENDAR] && isOutsideClicked;
-      const shouldGuestClose = isMenuClicked[GUEST] && isOutsideClicked;
+    if (hamburgerRef.current !== null) {
+      const shouldHamburgerClose = !hamburgerRef?.current.contains(event.target);
       if (shouldHamburgerClose) {
         setIsHamburgerClicked(false);
-      }
-      if (shouldLocationClose || shouldCalendarClose || shouldGuestClose) {
-        toggleMenu();
       }
     }
   };
@@ -80,32 +44,10 @@ const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navig
     setState();
   };
 
-  const toggleMenu = modifier => {
-    const newObj = { ...isMenuClicked };
-    for (let i in newObj) {
-      newObj[i] = false;
-    }
-    if (modifier) newObj[modifier] = true;
-    setIsMenuClicked(newObj);
-  };
-
   const goToEitherSignupOrLogin = bool => {
     setRequireBirthday(false);
     setIsSignupClicked(bool);
     setIsLogInClicked(!bool);
-  };
-
-  const clickSearch = () => {
-    if (!location) {
-      toggleMenu(LOCATION);
-    } else if (!startDate || !endDate) {
-      toggleMenu(CALENDAR);
-    } else if (adult + child + infant === 0) {
-      toggleMenu(GUEST);
-    } else {
-      toggleMenu();
-      fetchData();
-    }
   };
 
   return (
@@ -128,31 +70,6 @@ const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navig
             <img src="/images/Navigation/airbnb.png" alt="codebnb" />
             <span>codebnb</span>
           </Logosection>
-          {displaySelect && (
-            <SelectOption
-              locationRef={locationRef}
-              calendarRef={calendarRef}
-              guestRef={guestRef}
-              menuRef={menuRef}
-              searchRef={searchRef}
-              startDate={startDate}
-              setStartDate={setStartDate}
-              endDate={endDate}
-              setEndDate={setEndDate}
-              location={location}
-              setLocation={setLocation}
-              handleClick={handleClick}
-              isMenuClicked={isMenuClicked}
-              toggleMenu={toggleMenu}
-              adult={adult}
-              setAdult={setAdult}
-              child={child}
-              setChild={setChild}
-              infant={infant}
-              setInfant={setInfant}
-              clickSearch={clickSearch}
-            />
-          )}
           <Hamburgersection>
             <div className="host">호스트 되기</div>
             <div onClick={() => handleClick(TOGGLE_HAMBURGER)} className="hamburgerMenu" ref={hamburgerRef}>
@@ -168,8 +85,15 @@ const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navig
               <div className={`popup ${isHamburgerClicked || "hide"}`}>
                 {localStorage.getItem("token") ? (
                   <>
-                    <div onClick={() => localStorage.clear()}>로그아웃</div>
-                    <div onClick={() => history.push("/reservation")}>여행</div>
+                    <div
+                      onClick={() => {
+                        localStorage.clear();
+                        history.push("/");
+                      }}
+                    >
+                      로그아웃
+                    </div>
+                    <div>여행</div>
                     <div>저장 목록</div>
                     <div>도움말</div>
                   </>
@@ -194,7 +118,7 @@ const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navig
 export default Navigation;
 
 const NavSpaceTaker = styled.div`
-  height: 90px;
+  height: 80px;
 `;
 
 const NavWrapper = styled.div`
@@ -202,10 +126,10 @@ const NavWrapper = styled.div`
   position: fixed;
   top: 0;
   background-color: white;
+  border-bottom: 1px solid #e0e0e0;
   width: 100%;
-  height: 90px;
-  z-index: 7;
-  box-shadow: 0px 0px 10px -1px rgba(50, 50, 50, 0.31);
+  height: 80px;
+  z-index: 100;
 `;
 
 const Nav = styled.nav`

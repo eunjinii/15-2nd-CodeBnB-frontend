@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Navigation from "../../Components/Navigation/Navigation";
 import Footer from "../../Components/Footer/Footer";
 import styled from "styled-components";
@@ -11,6 +12,7 @@ const Home = () => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [infant, setInfant] = useState(0);
+  const history = useHistory();
 
   const state = {
     location,
@@ -30,7 +32,10 @@ const Home = () => {
     setInfant,
   };
 
-  const fetchData = () => {};
+  const fetchData = () => {
+    const query = `?checkin=${startDate}&checkout=${endDate}&adults=${adult}&child=${child}`;
+    history.push(`/roomlist${query}`);
+  };
 
   return (
     <>
