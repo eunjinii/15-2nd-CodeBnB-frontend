@@ -3,12 +3,8 @@ import PopUp from "../../PopUp/PopUp";
 import styled from "styled-components";
 import { BaseButtonForm, InputForm } from "../../Buttons/Button";
 import { Divider } from "../Signup/Signup";
+import { KAKAO_API, LOGIN_API as API } from "../../../config";
 const { Kakao } = window;
-
-const API = "http://192.168.219.148:8000/users/signin";
-// const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
-// const KAKAO_API = "http://192.168.219.144:8080/users/kakaologin";
-const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
 
 const Login = ({ goToEitherSignupOrLogin, handleExit }) => {
   const [email, setEmail] = useState("");
@@ -40,6 +36,7 @@ const Login = ({ goToEitherSignupOrLogin, handleExit }) => {
             localStorage.setItem("token", res.AUTHORIZATION);
             localStorage.setItem("username", res.email.split("@")[0]);
             localStorage.setItem("profile", res.profile);
+            document.body.style.overflow = "unset";
             handleExit();
           } else {
             alert("회원 정보가 잘못되었읍니다. 다시 한번 확인해주세요 😊");
@@ -51,7 +48,6 @@ const Login = ({ goToEitherSignupOrLogin, handleExit }) => {
   const kakaoLogin = () => {
     Kakao.Auth.login({
       success: authObj => {
-        console.log(authObj);
         fetch(KAKAO_API, {
           method: "POST",
           body: JSON.stringify({
@@ -60,15 +56,15 @@ const Login = ({ goToEitherSignupOrLogin, handleExit }) => {
         })
           .then(res => res.json())
           .then(res => {
-            console.log(res);
             if (res.MESSAGE === "SUCCESS") {
-              alert("로그인 성공");
+              alert("로그인 성공 😄");
               localStorage.setItem("token", res.AUTHORIZATION);
               localStorage.setItem("username", res.email.split("@")[0]);
               localStorage.setItem("profile", res.profile);
+              document.body.style.overflow = "unset";
               handleExit();
             } else {
-              alert("Kakao 로그인에 실패하였습니다.");
+              alert("아이디가 없습니다. 가입 먼저 해주세요 🙂");
               goToEitherSignupOrLogin(true);
             }
           });

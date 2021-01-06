@@ -5,14 +5,8 @@ import { flexAlignCenter } from "../../../styles/Theme";
 import { BaseButtonForm, InputForm } from "../../Buttons/Button";
 import { ReactComponent as NoIcon } from "./no_icon.svg";
 import { ReactComponent as YesIcon } from "./yes_icon.svg";
+import { KAKAO_API, SIGNUP_API as API } from "../../../config";
 const { Kakao } = window;
-
-// const API = "http://192.168.219.148:8000/users/signup";
-const API = "http://192.168.219.148:8000/users/signup";
-// const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
-// const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
-// const KAKAO_API = "http://192.168.219.144:8080/users/kakaologin";
-const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
 
 const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequireBirthday }) => {
   const [emailSignup, setEmailSignup] = useState(false);
@@ -61,13 +55,13 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
         .then(res => res.json())
         .then(res => {
           if (res.MESSAGE === "SUCCESS") {
-            alert("회원가입에 성공하였습니다.");
+            alert("회원가입에 성공하였습니다 😙");
             goToEitherSignupOrLogin(false);
           } else if (res.MESSAGE === "ALREADY_EXISTS") {
-            alert("아이디가 이미 존재합니다.");
+            alert("아이디가 이미 존재합니다 ☺️");
             goToEitherSignupOrLogin(false);
           } else {
-            alert("잘못된 정보 입니다. 입력 정보를 확인해주세요.");
+            alert("잘못된 정보 입니다. 입력 정보를 확인해주세요 😋");
           }
         });
     }
@@ -94,12 +88,13 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
           })
             .then(res => res.json())
             .then(res => {
-              alert("회원가입 성공");
+              alert("회원가입에 성공하였습니다 🤪");
               goToEitherSignupOrLogin(false);
             });
         },
         fail: error => {
-          alert("kakao 로그인 실패");
+          alert("kakao 로그인 실패하였습니다 😙");
+          document.body.style.overflow = "unset";
           handleExit();
         },
       });
@@ -301,7 +296,7 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
               </div>
             </Validation>
           )}
-          <KakaoLogin onClick={kakaoSignup}>카카오 계정으로 로그인</KakaoLogin>
+          <KakaoLogin onClick={kakaoSignup}>카카오 계정으로 회원가입</KakaoLogin>
         </KakaoBirthday>
       ) : (
         <Signupmain>

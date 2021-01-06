@@ -4,9 +4,10 @@ import Routes from "./Routes";
 import GlobalStyle from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/Theme";
+import { KAKAO_KEY } from "./config";
 
 const { Kakao } = window;
-Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+Kakao.init(KAKAO_KEY);
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
