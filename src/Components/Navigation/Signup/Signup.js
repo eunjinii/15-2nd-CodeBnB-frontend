@@ -7,7 +7,11 @@ import { ReactComponent as NoIcon } from "./no_icon.svg";
 import { ReactComponent as YesIcon } from "./yes_icon.svg";
 const { Kakao } = window;
 
+// const API = "http://192.168.219.148:8000/users/signup";
 const API = "http://192.168.219.148:8000/users/signup";
+// const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
+// const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
+// const KAKAO_API = "http://192.168.219.144:8080/users/kakaologin";
 const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
 
 const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequireBirthday }) => {
@@ -33,7 +37,7 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
       firstName &&
       date &&
       month &&
-      year > 2002
+      year <= 2002
     ) {
       setIsEverythingOk(true);
     }
@@ -69,7 +73,7 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
     }
   };
 
-  const kakaoLogin = () => {
+  const kakaoSignup = () => {
     if (month === 0 || month === "월" || date === 0 || date === "일" || year === 0 || year === "년") {
       alert("생년월일을 입력해 주세요 🙂");
     } else if (Number(year) > 2002) {
@@ -91,10 +95,7 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
             .then(res => res.json())
             .then(res => {
               alert("회원가입 성공");
-              localStorage.setItem("token", res.AUTHORIZATION);
-              localStorage.setItem("username", res.email.split("@")[0]);
-              localStorage.setItem("profile", res.profile);
-              handleExit();
+              goToEitherSignupOrLogin(false);
             });
         },
         fail: error => {
@@ -300,7 +301,7 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
               </div>
             </Validation>
           )}
-          <KakaoLogin onClick={kakaoLogin}>카카오 계정으로 로그인</KakaoLogin>
+          <KakaoLogin onClick={kakaoSignup}>카카오 계정으로 로그인</KakaoLogin>
         </KakaoBirthday>
       ) : (
         <Signupmain>

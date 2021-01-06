@@ -6,6 +6,8 @@ import { Divider } from "../Signup/Signup";
 const { Kakao } = window;
 
 const API = "http://192.168.219.148:8000/users/signin";
+// const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
+// const KAKAO_API = "http://192.168.219.144:8080/users/kakaologin";
 const KAKAO_API = "http://192.168.219.148:8000/users/kakaologin";
 
 const Login = ({ goToEitherSignupOrLogin, handleExit }) => {
