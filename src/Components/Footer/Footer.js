@@ -36,6 +36,7 @@ const Footer = () => {
 const Footerbody = styled.div`
   background-color: #f7f7f7;
   padding: 50px 100px 30px;
+  font-size: 14px;
 `;
 
 const Footermain = styled.main`

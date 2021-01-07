@@ -10,12 +10,19 @@ import PriceFilterDropDown from "./PriceFilterDropDown/PriceFilterDropDown";
 import PageButtons from "./PageButtons/PageButtons";
 import EmptyState from "./EmptyState/EmptyState";
 import Footer from "../../Components/Footer/Footer";
+import Navigation from "../../Components/Navigation/Navigation";
 
 const API = "http://192.168.219.148:8000";
 const LIMIT = 15;
 const RoomList = () => {
   const history = useHistory();
   const [isMapToggleOn, setIsMapToggleOn] = useState(true);
+  const [location, setLocation] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [adult, setAdult] = useState(0);
+  const [child, setChild] = useState(0);
+  const [infant, setInfant] = useState(0);
   const [data, setData] = useState([]);
   const [homes, setHomes] = useState([]);
   const [bedFilter, setBedFilter] = useState([]);
@@ -29,7 +36,7 @@ const RoomList = () => {
   const [filteredResult, setFilteredResult] = useState([]);
   const [prevFilterState, setPrevFilterState] = useState([]);
 
-  const stringToQuery = (query) => {
+  const stringToQuery = query => {
     const [_, params] = query.split("?");
     return (
       params &&
@@ -40,26 +47,26 @@ const RoomList = () => {
     );
   };
 
-  const queryToString = (queryObj) => {
+  const queryToString = queryObj => {
     return (
       "?" +
       Object.entries(queryObj)
-        .flatMap((e) => e.join("="))
+        .flatMap(e => e.join("="))
         .join("&")
     );
   };
 
-  const arrayToString = (queryArray) => {
-    return "?" + queryArray.flatMap((e) => e.join("=")).join("&");
+  const arrayToString = queryArray => {
+    return "?" + queryArray.flatMap(e => e.join("=")).join("&");
   };
 
-  const fetchFilteredData = (queryStrings) => {
+  const fetchFilteredData = queryStrings => {
     fetch(`${API}/homes${queryStrings}`)
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         data && setHomes(data.homes);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   const handlePopUp = () => {
@@ -70,9 +77,7 @@ const RoomList = () => {
       setFilters(prevFilterState);
     }
     setIsConditionFilterPop(!isConditionFilterPop);
-    document.body.style.overflow = `${
-      isConditionFilterPop ? "unset" : "hidden"
-    }`;
+    document.body.style.overflow = `${isConditionFilterPop ? "unset" : "hidden"}`;
   };
 
   const [roomTypeFilters, setRoomTypeFilters] = useState([]);
@@ -80,18 +85,14 @@ const RoomList = () => {
 
   const handleRoomTypePopUp = () => {
     setIsRoomTypeFilterPop(!isRoomTypeFilterPop);
-    document.body.style.overflow = `${
-      isRoomTypeFilterPop ? "unset" : "hidden"
-    }`;
+    document.body.style.overflow = `${isRoomTypeFilterPop ? "unset" : "hidden"}`;
   };
 
   // [필터 추가하기] -> [침실과 침대] 항목 수량 변경 기능
   const handleModifyBtn = (id, type) => {
     const { filterType, filterItem, filterChecked } = filters[0];
     let modifiedStatus = filterChecked;
-    type === "plus"
-      ? modifiedStatus[id]++
-      : filterChecked[id] >= 1 && modifiedStatus[id]--;
+    type === "plus" ? modifiedStatus[id]++ : filterChecked[id] >= 1 && modifiedStatus[id]--;
     setBedFilter({
       filterType: filterType,
       filteredItem: filterItem.map((item, index) => {
@@ -106,9 +107,7 @@ const RoomList = () => {
   // [필터 추가하기] -> [편의시설, 시설, 건물유형, 지역] 항목 체크 기능
   const handleCheckBtn = (id, filterType) => {
     const checkedStatus = filters.map((filter, index) => {
-      index &&
-        filter.filterType === filterType &&
-        (filter.filterChecked[id + 1] = !filter.filterChecked[id + 1]);
+      index && filter.filterType === filterType && (filter.filterChecked[id + 1] = !filter.filterChecked[id + 1]);
       return filter;
     });
     setFilters(checkedStatus);
@@ -119,9 +118,7 @@ const RoomList = () => {
     const filteredListTemp = filters
       .map((filter, index) => {
         if (index) {
-          const filteredStatus = filter.filterItem.filter(
-            (_, index) => filter.filterChecked[index]
-          );
+          const filteredStatus = filter.filterItem.filter((_, index) => filter.filterChecked[index]);
           if (filteredStatus.length > 0)
             return {
               filterType: filter.filterType,
@@ -129,11 +126,9 @@ const RoomList = () => {
             };
         }
       })
-      .filter((el) => el);
+      .filter(el => el);
 
-    filteredResult.length
-      ? setIsConditionFiltered(true)
-      : setIsConditionFiltered(false);
+    filteredResult.length ? setIsConditionFiltered(true) : setIsConditionFiltered(false);
 
     filteredListTemp.unshift(bedFilter);
     setFilteredResult(filteredListTemp);
@@ -153,25 +148,25 @@ const RoomList = () => {
             return `${id}=${filters[0].filterChecked[index]}`;
           }
         })
-        .filter((id) => id)
+        .filter(id => id)
         .join("&");
 
     const filterRestArray =
       filters &&
-      filters.slice(1).map((filter) => {
+      filters.slice(1).map(filter => {
         return filter.filterChecked
           .map((isChecked, index) => {
             if (isChecked) {
               return filter.filterId[index + 1];
             }
           })
-          .filter((id) => id);
+          .filter(id => id);
       });
 
     const searchString2 = filterRestArray
       .map((results, index) => {
         const result = results
-          .map((result) => {
+          .map(result => {
             if (index === 0) return `amenities=${result}`;
             else if (index === 1) return `property_type_id=${result}`;
             else if (index === 2) return `neighborhood_id=${result}`;
@@ -179,7 +174,7 @@ const RoomList = () => {
           .join("&");
         return result;
       })
-      .filter((id) => id)
+      .filter(id => id)
       .join("&");
 
     // 필터추가하기 검색 query string으로.
@@ -190,26 +185,21 @@ const RoomList = () => {
     const prevQueryArray = Object.entries({
       ...stringToQuery(history.location.search),
     }).filter(
-      (el) =>
-        ![
-          "min_beds",
-          "min_bedrooms",
-          "min_bathrooms",
-          "amenities",
-          "property_type_id",
-          "neighborhood_id",
-        ].includes(el[0])
+      el =>
+        !["min_beds", "min_bedrooms", "min_bathrooms", "amenities", "property_type_id", "neighborhood_id"].includes(
+          el[0]
+        )
     );
     const nextQueryArray = Object.entries({ ...stringToQuery(searchString) });
     const nextString = arrayToString([...prevQueryArray, ...nextQueryArray]);
 
     history.push(`/roomlist${nextString}`);
     fetch(`${API}/homes${nextString}`)
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         setHomes(data.homes);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   //[요금 검색] 여닫기
@@ -218,7 +208,7 @@ const RoomList = () => {
   };
 
   //[필터 추가하기] 필터 모달창에서 항목 숨기고 모두보기 버튼 토글
-  const viewMoreBtn = (id) => {
+  const viewMoreBtn = id => {
     const toggledArray = filters.map((filter, index) => {
       if (index === id + 1) {
         filter.isViewOpen = !filter.isViewOpen;
@@ -231,16 +221,16 @@ const RoomList = () => {
   useEffect(() => {
     // fetch("/data/RoomList/homes.json")
     fetch(`${API}/homes`)
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         setData(data);
         setHomes(data.homes);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
 
     fetch("/data/RoomList/listFilters.json")
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         const newData = data.filters.map((filter, index) => {
           return index
             ? {
@@ -255,21 +245,21 @@ const RoomList = () => {
         });
         setFilters(newData);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
 
     fetch("/data/RoomList/roomTypeFilters.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const newData = data.roomTypeFilters.map((filter) => {
+      .then(res => res.json())
+      .then(data => {
+        const newData = data.roomTypeFilters.map(filter => {
           return { ...filter, isChecked: false };
         });
         setRoomTypeFilters(newData);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }, []);
 
   //페이지네이션
-  const paging = (e) => {
+  const paging = e => {
     const offset = e.target.dataset.index;
     if (!offset) return;
     const nextQueryObj = { ...stringToQuery(history.location.search) };
@@ -278,16 +268,14 @@ const RoomList = () => {
     const nextString = queryToString(nextQueryObj);
     history.push(`/roomlist${nextString}`);
     fetch(`${API}/homes?${nextString}`)
-      .then((res) => res.json())
-      .then((data) => setHomes(data.homes));
+      .then(res => res.json())
+      .then(data => setHomes(data.homes));
   };
-
-  console.log(homes.length);
 
   const deleteFilter = () => {
     fetch(`${API}/homes`)
-      .then((res) => res.json())
-      .then((data) => setHomes(data.homes));
+      .then(res => res.json())
+      .then(data => setHomes(data.homes));
   };
 
   const backToDefault = () => {
@@ -300,10 +288,26 @@ const RoomList = () => {
     setPrevFilterState([]);
   };
 
-  console.log(filteredResult);
+  const state = {
+    location,
+    startDate,
+    endDate,
+    adult,
+    child,
+    infant,
+  };
 
+  const stateSetter = {
+    setLocation,
+    setStartDate,
+    setEndDate,
+    setAdult,
+    setChild,
+    setInfant,
+  };
   return (
     <RoomListPage>
+      <Navigation state={state} stateSetter={stateSetter} setStartDate={setStartDate} navigationPadding={110} />
       {isConditionFilterPop && (
         <FilterPopUp
           className="roomListPopUp"
@@ -323,9 +327,7 @@ const RoomList = () => {
           <div>12월 29일 - 12월 31일</div>
           <div>게스트 3명</div>
         </SearchResultSummary>
-        <LocationTitle onClick={() => backToDefault()}>
-          Seoul-si의 숙소
-        </LocationTitle>
+        <LocationTitle onClick={() => backToDefault()}>Seoul-si의 숙소</LocationTitle>
         <FilterMapButtons>
           <FilterButtons>
             <FilterButton
@@ -371,9 +373,7 @@ const RoomList = () => {
               // filtered={filteredResult}
               // popActive={isConditionFilterPop}
               className={`${isConditionFilterPop ? "popActive" : ""}
-              ${
-                isConditionFiltered && filteredResult.length ? "filtered" : ""
-              }`}
+              ${isConditionFiltered && filteredResult.length ? "filtered" : ""}`}
               onClick={handlePopUp}
             >
               필터 추가하기
@@ -393,7 +393,7 @@ const RoomList = () => {
       </RoomListHeader>
       <RoomListContainer>
         {homes ? (
-          homes.map((item) => {
+          homes.map(item => {
             return <RoomListItem key={item.home_id} room={item} />;
           })
         ) : (
@@ -424,9 +424,9 @@ const SearchResultSummary = styled.div`
   ${flexAlignCenter}
   justify-content: flex-start;
   margin: 50px 0 10px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-size: ${props => props.theme.fontSizeSmall};
   color: #333;
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-weight: ${props => props.theme.fontWeightRegular};
 
   & div {
     margin-right: 6px;
@@ -443,7 +443,7 @@ const LocationTitle = styled.h1`
   width: 100%;
   margin: 4px 0 30px;
   font-size: 32px;
-  font-weight: ${(props) => props.theme.fontWeightBold};
+  font-weight: ${props => props.theme.fontWeightBold};
   cursor: pointer;
 `;
 
@@ -465,13 +465,13 @@ const FilterButton = styled.div`
   margin-right: 8px;
   padding: 0 18px;
   height: 36px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-size: ${props => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightRegular};
   border: 1px solid #999;
   border-radius: 18px;
   cursor: pointer;
 
-  ${(props) =>
+  ${props =>
     !props.active &&
     css`
       color: black;
@@ -494,22 +494,22 @@ const FilterButton = styled.div`
 const MapToggle = styled.div`
   ${flexCenter}
   margin-right: 20px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-size: ${props => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightRegular};
   color: #333;
   cursor: pointer;
 
   i {
     margin-right: 6px;
-    font-size: ${(props) => props.theme.fontSizeRegular};
+    font-size: ${props => props.theme.fontSizeRegular};
   }
 `;
 
 const CovidCheck = styled.div`
   ${flexCenter}
   margin: 30px 0 12px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-size: ${props => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightRegular};
 
   div {
     margin-left: 4px;
