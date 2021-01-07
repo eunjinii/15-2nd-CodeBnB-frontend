@@ -58,7 +58,6 @@ const PopUpContainer = styled.div`
   background: white;
   border-radius: 12px;
 `;
-
 const Header = styled.header`
   ${flexCenter}
   position: relative;
@@ -88,7 +87,6 @@ const PopUpContents = styled.div`
   overflow: scroll;
   overflow-x: hidden;
 `;
-
 const Botton = styled.div`
   ${flexAlignCenter}
   justify-content: space-between;

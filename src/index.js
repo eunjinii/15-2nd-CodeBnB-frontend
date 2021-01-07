@@ -7,7 +7,7 @@ import theme from "./styles/Theme";
 import { KAKAO_KEY } from "./config";
 
 const { Kakao } = window;
-Kakao.init(KAKAO_KEY);
+Kakao.init("5177014e1f032e265934325b9b02886c");
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
