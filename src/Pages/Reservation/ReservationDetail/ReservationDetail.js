@@ -22,7 +22,7 @@ const ReservationDetail = () => {
     host_name,
     host_profile_image,
     room_type,
-    total_cost,
+    total_price,
   } = detail;
   useEffect(() => {
     fetchData();
@@ -116,7 +116,7 @@ const ReservationDetail = () => {
                       <img src={host_profile_image} alt="hostprofile" />
                     </HostInfo>
                     <Price>
-                      <span>₩ {Number(total_cost).toLocaleString()}</span>
+                      <span>₩ {Number(total_price).toLocaleString()}</span>
                     </Price>
                   </HostSection>
                 </ContentSection>
