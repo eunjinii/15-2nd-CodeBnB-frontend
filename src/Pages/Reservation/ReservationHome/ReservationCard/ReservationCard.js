@@ -6,7 +6,7 @@ import { ReactComponent as MoveIcon } from "./move_icon.svg";
 import { useHistory } from "react-router-dom";
 
 const ReservationCard = ({ reservation }) => {
-  const { home_id, address, start_date, end_date, home_image, home_name } = reservation;
+  const { home_id, address, start_date, end_date, home_image, home_name, resrvation_id } = reservation;
   const history = useHistory();
 
   const momentToString = date => {
@@ -21,7 +21,7 @@ const ReservationCard = ({ reservation }) => {
         <ContentsContainer>
           <Date>{`${momentToString(start_date)} - ${momentToString(end_date)}`}</Date>
           <header>{`${address.split(",")[1]} ${address.split(",")[0]}`}</header>
-          <Content onClick={() => history.push(`/reservation/detail/${home_id}`)}>
+          <Content onClick={() => history.push(`/reservation/detail/${resrvation_id}`)}>
             <div>
               <img src={home_image[0]} alt="room_photo" />
               <span>{home_name}</span>
@@ -31,7 +31,7 @@ const ReservationCard = ({ reservation }) => {
             </div>
           </Content>
         </ContentsContainer>
-        <ShowDetail onClick={() => history.push(`/reservation/detail/${home_id}`)}>여행 계획 더 보기</ShowDetail>
+        <ShowDetail onClick={() => history.push(`/reservation/detail/${resrvation_id}`)}>여행 계획 더 보기</ShowDetail>
       </CardContainer>
     </ReservationCardsStyle>
   );

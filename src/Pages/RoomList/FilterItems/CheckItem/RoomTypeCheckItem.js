@@ -34,13 +34,13 @@ const CheckBox = styled.div`
   border-radius: 3px;
   border: 1px solid #aaa;
   cursor: pointer;
-  ${(props) =>
+  ${props =>
     props.checked &&
     css`
       ${flexCenter};
       background: #000;
     `}
-  ${(props) =>
+  ${props =>
     props.prevChecked &&
     css`
       ${flexCenter};
@@ -61,13 +61,13 @@ const Explain = styled.div`
 
 const FilterItemTitle = styled.div`
   margin-bottom: 6px;
-  font-weight: ${(props) => props.theme.fontWeightMedium};
-  font-size: ${(props) => props.theme.fontSizeMedium};
+  font-weight: ${props => props.theme.fontWeightMedium};
+  font-size: ${props => props.theme.fontSizeMedium};
 `;
 
 const FilterItemContent = styled.div`
-  font-weight: ${(props) => props.theme.fontWeightRegular};
-  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightRegular};
+  font-size: ${props => props.theme.fontSizeSmall};
   line-height: 18px;
 `;
 

@@ -4,11 +4,7 @@ import { flexCenter } from "../../../../styles/Theme";
 
 const CheckItem = ({ id, item, handleCheckBtn, filterType, checkedItems }) => {
   return (
-    <CheckingItem
-      className="CheckItem"
-      onClick={() => handleCheckBtn(id - 1, filterType)}
-      id={id}
-    >
+    <CheckingItem className="CheckItem" onClick={() => handleCheckBtn(id - 1, filterType)} id={id}>
       {checkedItems && checkedItems.includes(item) ? (
         <CheckBox className="checked" id={id}>
           <CheckImg alt="check" src="/images/RoomList/check.png" />

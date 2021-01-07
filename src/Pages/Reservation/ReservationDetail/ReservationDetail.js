@@ -58,17 +58,16 @@ const ReservationDetail = () => {
   };
 
   const deleteReservation = () => {
-    // fetch(`${API}/${params.id}`, {
-    //   method: "DELETE",
-    //   headers: {
-    //     Authorization: localStorage.getItem("token"),
-    //   },
-    // })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log(res);
-    //     history.push("/reservations");
-    //   });
+    fetch(`${API}/${params.id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        history.push("/reservation");
+      });
   };
   return (
     <>

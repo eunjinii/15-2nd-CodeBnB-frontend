@@ -20,14 +20,14 @@ const FilterDropDown = ({
   const history = useHistory();
 
   // [숙소 유형] 체크하기
-  const handleRoomTypeCheck = (id) => {
-    const changedStatus = roomTypeFilters.map((filter) => {
+  const handleRoomTypeCheck = id => {
+    const changedStatus = roomTypeFilters.map(filter => {
       if (filter.id === id) return { ...filter, isChecked: !filter.isChecked };
       return filter;
     });
     const filteredRoomTypes = changedStatus
-      .filter((filter) => filter.isChecked)
-      .map((type) => {
+      .filter(filter => filter.isChecked)
+      .map(type => {
         return type.id;
       });
     setRoomTypeFilters(changedStatus);
@@ -38,22 +38,18 @@ const FilterDropDown = ({
   const searchRoomResult = () => {
     const prevQueryArray = Object.entries({
       ...stringToQuery(history.location.search),
-    }).filter((el) => el[0] !== "room_types");
-    const newQueryArray = roomTypeFilteredResult.map((result) => [
-      `room_types=${result}`,
-    ]);
+    }).filter(el => el[0] !== "room_types");
+    const newQueryArray = roomTypeFilteredResult.map(result => [`room_types=${result}`]);
     const nextString = arrayToString([...prevQueryArray, ...newQueryArray]);
     history.push(`/roomlist${nextString}`);
     roomTypeFilteredResult && fetchFilteredData(nextString);
     setRoomTypeFilteredResult(roomTypeFilteredResult);
-    roomTypeFilteredResult.length > 0
-      ? setIsRoomFiltered(true)
-      : setIsRoomFiltered(false);
+    roomTypeFilteredResult.length > 0 ? setIsRoomFiltered(true) : setIsRoomFiltered(false);
   };
 
   // 체크버튼 리셋
   const resetCheckBtn = () => {
-    roomTypeFilters.map((filter) => {
+    roomTypeFilters.map(filter => {
       filter.isChecked = false;
       return filter;
     });
@@ -65,7 +61,7 @@ const FilterDropDown = ({
     backgroundRef.current.addEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = event => {
     event.stopPropagation();
     if (popUpRef.current === null || !popUpRef.current.contains(event.target)) {
       document.body.style.overflow = "unset";
@@ -79,12 +75,7 @@ const FilterDropDown = ({
         <CheckItems>
           {roomTypeFilters.map((type, index) => {
             return (
-              <RoomTypeCheckItem
-                key={index}
-                index={index}
-                type={type}
-                handleRoomTypeCheck={handleRoomTypeCheck}
-              />
+              <RoomTypeCheckItem key={index} index={index} type={type} handleRoomTypeCheck={handleRoomTypeCheck} />
             );
           })}
         </CheckItems>
@@ -156,7 +147,7 @@ const EraseBtn = styled.div`
   cursor: pointer;
   color: #ddd;
 
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       color: #000;
@@ -168,8 +159,8 @@ const ConfirmBtn = styled.div`
   width: 64px;
   height: 38px;
   background: #333;
-  font-weight: ${(props) => props.theme.fontWeightMedium};
-  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightMedium};
+  font-size: ${props => props.theme.fontSizeSmall};
   color: #fff;
   border-radius: 8px;
   cursor: pointer;

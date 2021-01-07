@@ -7,10 +7,7 @@ const BedFilterItem = ({ id, filter, handleModifyBtn, filteredCounts }) => {
     <BedFilter className="BedFilterItem">
       <div>{filter}</div>
       <Modifier className="modifier">
-        <Minus
-          onClick={() => handleModifyBtn(id, "minus")}
-          count={filteredCounts[id]}
-        />
+        <Minus onClick={() => handleModifyBtn(id, "minus")} count={filteredCounts[id]} />
         <div>{filteredCounts[id]}</div>
         <Plus onClick={() => handleModifyBtn(id, "plus")} />
       </Modifier>
@@ -48,7 +45,7 @@ const Plus = styled.div`
 
 const Minus = styled(Plus)`
   background-size: 40% 2px;
-  ${(props) =>
+  ${props =>
     !props.count &&
     css`
       opacity: 0.15;

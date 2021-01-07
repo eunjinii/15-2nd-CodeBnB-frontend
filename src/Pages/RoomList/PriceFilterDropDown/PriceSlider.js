@@ -56,28 +56,20 @@ export default function CustomizedSlider({
         <InputBox>
           <Value>최저 요금</Value>
           <Currency>₩</Currency>
-          <MinValue
-            defaultValue={value[0]}
-            value={curVal[0]}
-            onChange={getMinInputValue}
-          />
+          <MinValue defaultValue={value[0]} value={curVal[0]} onChange={getMinInputValue} />
         </InputBox>
         <div>-</div>
         <InputBox>
           <Value>최고 요금</Value>
           <Currency>₩</Currency>
-          <MaxValue
-            defaultValue={value[1]}
-            value={curVal[1]}
-            onChange={getMaxInputValue}
-          />
+          <MaxValue defaultValue={value[1]} value={curVal[1]} onChange={getMaxInputValue} />
         </InputBox>
       </PriceInputs>
     </div>
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     width: 330 + theme.spacing(3) * 2,
   },
@@ -156,7 +148,7 @@ const Currency = styled.div`
   font-size: 16px;
 `;
 
-const MinValue = styled.input.attrs((props) => ({
+const MinValue = styled.input.attrs(props => ({
   type: "text",
   placeholder: props.defaultValue,
 }))`
@@ -174,7 +166,7 @@ const MinValue = styled.input.attrs((props) => ({
   }
 `;
 
-const MaxValue = styled(MinValue).attrs((props) => ({
+const MaxValue = styled(MinValue).attrs(props => ({
   placeholder: props.defaultValue,
 }))`
   /* background: rgba(0, 0, 0, 0.4); */
