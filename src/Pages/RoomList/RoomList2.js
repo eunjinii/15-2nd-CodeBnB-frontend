@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { flexCenter, flexAlignCenter } from "../../styles/Theme";
 import _ from "lodash";
@@ -13,7 +13,6 @@ import EmptyState from "./EmptyState/EmptyState";
 import Footer from "../../Components/Footer/Footer";
 import Navigation from "../../Components/Navigation/Navigation";
 import { ROOMLIST_API as API } from "../../config";
-import { SentimentDissatisfiedSharp } from "@material-ui/icons";
 
 const LIMIT = `15`;
 
@@ -27,8 +26,6 @@ const LOCATION_MAPPING = {
 
 const RoomList = () => {
   const history = useHistory();
-  const urlLocation = useLocation();
-
   const locationName = history.location.search.split("&")[0]?.split("=")[1];
   const checkIn = history.location.search.split("&")[1]?.split("=")[1];
   const checkOut = history.location.search.split("&")[2]?.split("=")[1];
@@ -43,7 +40,7 @@ const RoomList = () => {
   const [adult, setAdult] = useState(adultNum);
   const [child, setChild] = useState(childNum);
   const [infant, setInfant] = useState(infantNum);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([1, 1, 1]);
   const [homes, setHomes] = useState([]);
   const [bedFilter, setBedFilter] = useState([]);
   const [filters, setFilters] = useState([]);
@@ -163,7 +160,7 @@ const RoomList = () => {
     searchFilterOptions();
   };
 
-  // 변경된 filter로 쿼리스트링 만들어서 history.push하는 함수
+  // 변경된 filter로 쿼리스트링 만들어서 fetch하는 함수
   const searchFilterOptions = () => {
     const searchString1 =
       filters[0] &&
@@ -202,14 +199,31 @@ const RoomList = () => {
       .filter(id => id)
       .join("&");
 
-    let query = "";
-    if (searchString1 !== "") query += `&${searchString1}`;
-    if (searchString2 !== "") query += `&${searchString2}`;
-    if (navigationQuery() !== "") query += `&${navigationQuery()}`;
-    if (query[0] === "&") query = query.slice(1);
-    if (query.length !== 0) query = "?" + query;
+    // 필터추가하기 검색 query string으로.
+    const searchString = "?" + [searchString1, searchString2].join("&");
 
-    history.push(`/roomlist${query}`);
+    //기존 url query string에서 배열로.
+    const prevQueryArray = Object.entries({
+      ...stringToQuery(history.location.search),
+    }).filter(
+      el =>
+        !["min_beds", "min_bedrooms", "min_bathrooms", "amenities", "property_type_id", "neighborhood_id"].includes(
+          el[0]
+        )
+    );
+    const nextQueryArray = Object.entries({ ...stringToQuery(searchString) });
+    const nextString = arrayToString([...prevQueryArray, ...nextQueryArray]);
+    const query = nextString.slice(0, nextString.length - 2);
+
+    // history.push(`/roomlist${nextString}${navQuery}`);
+    fetch(`${API}/homes${query}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log("this!: ", data);
+        setHomes(data.homes);
+        setData(data);
+      })
+      .catch(err => console.log(err));
   };
 
   //[요금 검색] 여닫기
@@ -228,15 +242,15 @@ const RoomList = () => {
     setFilters(toggledArray);
   };
 
-  // [최초에 데이터 불러오기]
   useEffect(() => {
     // fetch("/data/RoomList/homes.json")
-    fetch(`${API}/homes${urlLocation.search}`)
+    fetch(`${API}/homes?${navigationQuery()}`)
       .then(res => res.json())
       .then(data => {
         setData(data);
         setHomes(data.homes);
-      });
+      })
+      .catch(err => console.log(err));
 
     fetch("/data/RoomList/listFilters.json")
       .then(res => res.json())
@@ -268,21 +282,6 @@ const RoomList = () => {
       .catch(err => console.log(err));
   }, []);
 
-  // url 변경시 데이터를 새로 패치 받아 온다.
-  useEffect(() => {
-    fetch(`${API}/homes${urlLocation.search}`)
-      .then(res => res.json())
-      .then(res => {
-        if (!res.MESSAGE) {
-          setData(res);
-          setHomes(res.homes);
-        } else {
-          setData([]);
-          setHomes([]);
-        }
-      });
-  }, [urlLocation]);
-
   //페이지네이션
   const paging = e => {
     const offset = e.target.dataset.index;
@@ -306,7 +305,7 @@ const RoomList = () => {
     setInfant(0);
     fetch(`${API}/homes`)
       .then(res => res.json())
-      .then(res => setData(res));
+      .then(data => setHomes(data.homes));
   };
 
   const fetchDefault = () => {
@@ -334,13 +333,7 @@ const RoomList = () => {
   };
 
   const navigationQuery = () => {
-    let query = "";
-    if (startDate !== "") query += `&checkin=${startDate}`;
-    if (endDate !== "") query += `&checkout=${endDate}`;
-    if (adult !== 0) query += `&adult=${adult}`;
-    if (child !== 0) query += `&child=${child}`;
-    if (infant !== 0) query += `&infant=${infant}`;
-    if (query[0] === "&") query = query.slice(1);
+    const query = `checkin=${startDate}&checkout=${endDate}&adult=${adult}&child=${child}&infant=${infant}`;
     return query;
   };
 
@@ -459,7 +452,7 @@ const RoomList = () => {
             </MapToggle>
           </FilterMapButtons>
         )}
-        {data.homes !== undefined && data.homes.length !== 0 && (
+        {homes !== undefined && homes.length !== 0 && (
           <CovidCheck>
             예약하기 전에 코로나19 관련 여행 제한 사항을 확인하세요.
             <div>자세히 알아보기</div>
@@ -467,7 +460,7 @@ const RoomList = () => {
         )}
       </RoomListHeader>
       <RoomListContainer>
-        {data.homes !== undefined && data.homes.length !== 0 ? (
+        {homes !== undefined && homes.length !== 0 ? (
           data.homes.map(item => {
             return <RoomListItem key={item.home_id} room={item} />;
           })
@@ -475,7 +468,7 @@ const RoomList = () => {
           <EmptyState deleteFilter={deleteFilter} />
         )}
       </RoomListContainer>
-      {data.homes && <PageButtons paging={paging} homesCount={data.homes.length} />}
+      {homes && <PageButtons paging={paging} homesCount={homes.length} />}
       <Footer />
     </RoomListPage>
   );

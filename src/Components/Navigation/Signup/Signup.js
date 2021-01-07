@@ -88,7 +88,6 @@ const Signup = ({ goToEitherSignupOrLogin, handleExit, requireBirthday, setRequi
           })
             .then(res => res.json())
             .then(res => {
-              console.log(res);
               alert("회원가입에 성공하였습니다 🤪");
               goToEitherSignupOrLogin(false);
             });

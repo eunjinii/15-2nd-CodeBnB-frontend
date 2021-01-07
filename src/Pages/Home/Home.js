@@ -32,8 +32,24 @@ const Home = () => {
     setInfant,
   };
 
+  const convertLocation = location => {
+    if (location.split(" ")[1] === "강남구") {
+      return "gangnam";
+    } else if (location.split(" ")[1] === "마포구") {
+      return "mapo";
+    } else if (location.split(" ")[1] === "동작구") {
+      return "dongjak";
+    } else if (location.split(" ")[1] === "중구") {
+      return "joonggu";
+    } else {
+      return "seoul";
+    }
+  };
+
   const fetchData = () => {
-    const query = `?checkin=${startDate}&checkout=${endDate}&adults=${adult}&child=${child}`;
+    const query = `?location=${convertLocation(
+      location
+    )}&checkin=${startDate}&checkout=${endDate}&adult=${adult}&child=${child}&infant=${infant}`;
     history.push(`/roomlist${query}`);
   };
 

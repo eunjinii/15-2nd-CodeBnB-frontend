@@ -168,7 +168,14 @@ const Navigation = ({ state, stateSetter, fetchData, displaySelect = true, navig
               <div className={`popup ${isHamburgerClicked || "hide"}`}>
                 {localStorage.getItem("token") ? (
                   <>
-                    <div onClick={() => localStorage.clear()}>로그아웃</div>
+                    <div
+                      onClick={() => {
+                        alert("안전하게 로그아웃! 안녕히 가세요 😊");
+                        localStorage.clear();
+                      }}
+                    >
+                      로그아웃
+                    </div>
                     <div onClick={() => history.push("/reservation")}>여행</div>
                     <div>저장 목록</div>
                     <div>도움말</div>
@@ -205,7 +212,7 @@ const NavWrapper = styled.div`
   width: 100%;
   height: 90px;
   z-index: 7;
-  box-shadow: 0px 0px 10px -1px rgba(50, 50, 50, 0.31);
+  box-shadow: 0px 0px 10px 7px rgba(50, 50, 50, 0.08);
 `;
 
 const Nav = styled.nav`

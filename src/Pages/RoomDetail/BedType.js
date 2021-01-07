@@ -13,7 +13,7 @@ class BedType extends Component {
                 <div className="cardIconItem">
                   {[...Array(bed_info[0]?.count)].map((n, index) => {
                     return (
-                      <img className="cardIconItemImg" src="images/RoomDetail/noun_Bed_3667468.png" alt="userImg" />
+                      <img className="cardIconItemImg" src="/images/RoomDetail/noun_Bed_3667468.png" alt="userImg" />
                     );
                   })}
                 </div>

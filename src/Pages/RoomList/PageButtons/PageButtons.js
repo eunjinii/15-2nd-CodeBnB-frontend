@@ -13,9 +13,7 @@ const PageButtons = ({ paging, homesCount }) => {
         <NextPage />
       </PageBtnContainer>
       <PageRange>숙소 {homesCount}개 중 1 - 15</PageRange>
-      <AdditionalFee>
-        추가 수수료가 부과됩니다. 세금도 부과될 수 있습니다.
-      </AdditionalFee>
+      <AdditionalFee>추가 수수료가 부과됩니다. 세금도 부과될 수 있습니다.</AdditionalFee>
     </Pagination>
   );
 };
@@ -38,8 +36,8 @@ const PageBtn = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-weight: ${(props) => props.theme.fontWeightMedium};
+  font-size: ${props => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightMedium};
   cursor: pointer;
 
   &:hover {
@@ -97,14 +95,14 @@ const PrevPage = styled(NextPage)`
 
 const PageRange = styled.div`
   margin: 4px;
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-weight: ${(props) => props.theme.fontWeightMedium};
+  font-size: ${props => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightMedium};
 `;
 
 const AdditionalFee = styled.div`
   margin: 26px;
-  font-size: ${(props) => props.theme.fontSizeExtrasmall};
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-size: ${props => props.theme.fontSizeExtrasmall};
+  font-weight: ${props => props.theme.fontWeightRegular};
   color: #777;
 `;
 
