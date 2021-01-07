@@ -321,7 +321,6 @@ const MenuWrapper = styled.div`
 const LocationContainer = styled.div`
   padding: 20px 0;
   background-color: white;
-
   div {
     width: 450px;
     ${flexAlignCenter}

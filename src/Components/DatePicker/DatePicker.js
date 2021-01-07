@@ -226,7 +226,7 @@ const ClearButtonWrapper = styled.div`
 `;
 
 const ClearButton = styled.button`
-  width: 80px;
+  width: 84px;
   height: 30px;
   margin-right: ${props => `${props.clearPosition}px`};
   background-color: white;
