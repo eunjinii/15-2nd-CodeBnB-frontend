@@ -1,7 +1,5 @@
 # CodeBnb Project
 
-<hr>
-
 ## 팀명:  CodeBnb 
 - Airbnb 사이트 클론 프로젝트
 - 짧은 프로젝트 기간동안 개발에 집중해야 하므로 디자인/기획 부분만 클론했습니다.
@@ -21,8 +19,8 @@
 ## 팀원 소개
 
 ### FE 이은진(PM)
-- 깃헙 주소:
-- 블로그 주소:
+- 깃헙 주소:https://github.com/eunjinii
+- 블로그 주소:https://velog.io/@eunjin
 
 ### FE 김성훈
 - 깃헙 주소:
