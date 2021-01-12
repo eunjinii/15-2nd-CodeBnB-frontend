@@ -36,8 +36,8 @@
 - 블로그 주소:https://velog.io/@lupin7
 
 ### BE 이수한
-- 깃헙 주소:
-- 블로그 주소:
+- 깃헙 주소: https://github.com/dltngks54
+- 블로그 주소: https://velog.io/@dltngks54
 
 ## 사용한 기술 스택
 
