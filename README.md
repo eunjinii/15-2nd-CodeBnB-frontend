@@ -28,8 +28,8 @@
 - 블로그 주소:
 
 ### BE 김승재
-- 깃헙 주소:
-- 블로그 주소:
+- 깃헙 주소: https://github.com/seungjaekim-git
+- 블로그 주소: https://velog.io/@sj950902
 
 ### BE 김기수
 - 깃헙 주소:
