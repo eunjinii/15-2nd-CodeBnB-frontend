@@ -32,8 +32,8 @@
 - 블로그 주소: https://velog.io/@sj950902
 
 ### BE 김기수
-- 깃헙 주소:
-- 블로그 주소:
+- 깃헙 주소:https://github.com/markiron99
+- 블로그 주소:https://velog.io/@lupin7
 
 ### BE 이수한
 - 깃헙 주소:
