@@ -28,7 +28,6 @@ class ReservationWing extends Component {
   componentDidMount() {
     if (this.props.location.search) {
       const MAPPING = {};
-      // console.log(this.props.location.search.split("&"));
       for (let i of this.props.location.search.split("&")) {
         if (i.includes("?")) i = i.slice(1);
         const key = i.split("=")[0];
