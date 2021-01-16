@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { flexCenter, flexAlignCenter } from "../../../styles/Theme";
-
 const PopUp = ({ title, handleExit, children, bottom }) => {
   const popUpRef = useRef();
   const backgroundRef = useRef();

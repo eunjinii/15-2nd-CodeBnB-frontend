@@ -211,7 +211,6 @@ class RoomDetail extends Component {
 
   render() {
     const { house, facilityTypes } = this.state;
-    console.log(house);
     return (
       <>
         <Navigation navigationPadding={335} />
@@ -471,10 +470,7 @@ class RoomDetail extends Component {
                           <img className="hostImg" alt="hostImg" src="/images/RoomDetail/jsLove.png" />
                         </div>
                         <div className="hostNameSignDate">
-                          <div className="hostName">
-                            {house.host?.last_name}
-                            {house.host?.first_name}님
-                          </div>
+                          <div className="hostName">호스트:{house.host?.host_name}님</div>
                           <div className="signDate">회원 가입일:2017년 11월</div>
                         </div>
                       </div>
@@ -502,10 +498,7 @@ class RoomDetail extends Component {
                           </div>
 
                           <div className="superHostContainer">
-                            <div className="superHost">
-                              {house.host?.last_name}
-                              {house.host?.first_name}님은 슈퍼호스트입니다.
-                            </div>
+                            <div className="superHost">{house.host?.host_name}님은 슈퍼호스트입니다.</div>
                             <div className="superHostMeaning">
                               슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서 편안히 머무를 수 있도록
                               최선을 다하는 호스트입니다.
