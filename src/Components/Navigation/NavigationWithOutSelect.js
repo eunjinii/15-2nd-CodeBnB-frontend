@@ -93,7 +93,7 @@ const Navigation = ({ navigationPadding = 190 }) => {
                     >
                       로그아웃
                     </div>
-                    <div>여행</div>
+                    <div onClick={() => history.push("/reservation")}>여행</div>
                     <div>저장 목록</div>
                     <div>도움말</div>
                   </>

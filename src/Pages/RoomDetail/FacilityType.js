@@ -4,7 +4,6 @@ import "./FacilityType.scss";
 class FacilityType extends Component {
   render() {
     const { facilities } = this.props;
-    //console.log(facilities);
 
     return (
       <div className="FacilityType">

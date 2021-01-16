@@ -1,27 +1,28 @@
 import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { flexAlignCenter } from "../../../styles/Theme";
 
 const RoomListItem = ({ room }) => {
   const { price } = room;
+  const history = useHistory();
+  const location = useLocation();
+
   return (
     <RoomListItemContainer>
       <VisualContainer>
-        <ImgSlider>
+        <ImgSlider onClick={() => history.push(`/roomdetail/${room.home_id}${location.search}`)}>
           <img alt={room.home_name} src={room.home_images[0]} />
         </ImgSlider>
         <BookmarkContainer>
-          <BookmarkFilled
-            alt="bookmark"
-            src="/images/RoomList/like-filled.png"
-          />
+          <BookmarkFilled alt="bookmark" src="/images/RoomList/like-filled.png" />
           <BookmarkSolid alt="bookmark" src="/images/RoomList/like.png" />
         </BookmarkContainer>
       </VisualContainer>
       <RateContainer>
         <RateStar className="fas fa-star" />
-        <RateAvg>4.5</RateAvg>
-        <RateCount>(45)</RateCount>
+        <RateAvg>{room.avg_rating}</RateAvg>
+        {/* <RateCount>(45)</RateCount> */}
       </RateContainer>
       <TypeAndLocation>
         <RoomType>{room.home_building}</RoomType>
@@ -33,11 +34,7 @@ const RoomListItem = ({ room }) => {
         <RoomPerNight>/ 1박</RoomPerNight>
       </OriginalPrice>
       <TotalPrice>
-        총 요금: ₩
-        {(
-          (price["1박비용"] + price["청소비"] + price["1인당가격증가율"] * 2) *
-          3
-        ).toLocaleString()}
+        총 요금: ₩{((price["1박비용"] + price["청소비"] + price["1인당가격증가율"] * 2) * 3).toLocaleString()}
       </TotalPrice>
     </RoomListItemContainer>
   );
@@ -51,7 +48,7 @@ const RoomListItemContainer = styled.div`
   margin-bottom: 50px;
   width: 300px;
   background: white;
-  font-size: ${(props) => props.theme.fontSizeMedium};
+  font-size: ${props => props.theme.fontSizeMedium};
   font-weight: 200;
 `;
 
@@ -102,13 +99,13 @@ const RateContainer = styled.div`
   margin-bottom: 6px;
   ${flexAlignCenter}
   justify-content: flex-start;
-  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-size: ${props => props.theme.fontSizeSmall};
 `;
 
 const RateStar = styled.i`
   margin-right: 4px;
   font-size: 12px;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${props => props.theme.primaryColor};
 `;
 
 const RateAvg = styled.div`
@@ -123,7 +120,7 @@ const TypeAndLocation = styled.div`
   ${flexAlignCenter}
   justify-content: flex-start;
   margin: 2px 0 4px 0;
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-weight: ${props => props.theme.fontWeightRegular};
 `;
 
 const RoomType = styled.div`
@@ -138,7 +135,7 @@ const RoomTitle = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: ${(props) => props.theme.fontWeightRegular};
+  font-weight: ${props => props.theme.fontWeightRegular};
 `;
 
 const OriginalPrice = styled.div`
@@ -147,20 +144,20 @@ const OriginalPrice = styled.div`
 `;
 
 const RoomPrice = styled.div`
-  font-weight: ${(props) => props.theme.fontWeightBold};
+  font-weight: ${props => props.theme.fontWeightBold};
 `;
 
 const RoomPerNight = styled.div`
   margin-left: 2px;
-  font-weight: ${(props) => props.theme.fontWeightMedium};
-  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-weight: ${props => props.theme.fontWeightMedium};
+  font-size: ${props => props.theme.fontSizeSmall};
   color: #333;
 `;
 
 const TotalPrice = styled.div`
   margin-top: 10px;
   text-decoration: underline;
-  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-size: ${props => props.theme.fontSizeSmall};
   color: #777;
   cursor: pointer;
 

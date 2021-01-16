@@ -22,7 +22,7 @@ const FilterPopUp = ({
     backgroundRef.current.addEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = event => {
     event.stopPropagation();
     if (popUpRef.current === null || !popUpRef.current.contains(event.target)) {
       document.body.style.overflow = "unset";
@@ -32,17 +32,9 @@ const FilterPopUp = ({
 
   return (
     <FilterBackground className="FilterPopUp" ref={backgroundRef}>
-      <FilterContainer
-        className="popUpContainer"
-        ref={popUpRef}
-        style={{ width: "780px" }}
-      >
+      <FilterContainer className="popUpContainer" ref={popUpRef} style={{ width: "780px" }}>
         <PopUpHeader>
-          <ExitBtn
-            alt="exit"
-            src="/images/RoomList/close-button.png"
-            onClick={handlePopUp}
-          />
+          <ExitBtn alt="exit" src="/images/RoomList/close-button.png" onClick={handlePopUp} />
           <PopUpTitle>필터 추가하기</PopUpTitle>
         </PopUpHeader>
         <PopUpContents className="popUpContents">
@@ -78,10 +70,7 @@ const FilterPopUp = ({
           </FilterListsRest>
         </PopUpContents>
         <BottomContainer>
-          <ResetBtn
-            active={filteredResult}
-            onClick={() => setFilteredResult([])}
-          >
+          <ResetBtn active={filteredResult} onClick={() => setFilteredResult([])}>
             전체 삭제
           </ResetBtn>
           <ConfirmBtn onClick={handleSearchBtn}>숙소 검색 결과</ConfirmBtn>
@@ -147,7 +136,7 @@ const FilterListBed = styled.div`
     justify-content: flex-start;
     padding-top: 10px;
     height: 90px;
-    font-weight: ${(props) => props.theme.fontWeightMedium};
+    font-weight: ${props => props.theme.fontWeightMedium};
     font-size: 22px;
   }
 `;
@@ -177,7 +166,7 @@ const ResetBtn = styled.div`
   cursor: pointer;
   color: #ddd;
 
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       color: black;
@@ -189,7 +178,7 @@ const ConfirmBtn = styled.div`
   width: 140px;
   height: 48px;
   background: #333;
-  font-size: ${(props) => props.theme.fontSizeMedium};
+  font-size: ${props => props.theme.fontSizeMedium};
   color: #fff;
   border: 1px solid #000;
   border-radius: 12px;

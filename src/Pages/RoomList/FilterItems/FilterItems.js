@@ -16,10 +16,7 @@ const FilterItems = ({ filter, id, viewMoreBtn, handleCheckBtn }) => {
       <FilterTitle>{filter.filterType}</FilterTitle>
       <FilterCheckItems>
         {filter.filterItem.length > 0 &&
-          (filter.isViewOpen
-            ? filter.filterItem
-            : filter.filterItem.slice(0, 4)
-          ).map((item, index) => {
+          (filter.isViewOpen ? filter.filterItem : filter.filterItem.slice(0, 4)).map((item, index) => {
             return (
               <CheckItem
                 key={index}
@@ -36,9 +33,7 @@ const FilterItems = ({ filter, id, viewMoreBtn, handleCheckBtn }) => {
       {filter.filterItem.length > 4 && (
         <ModalToggleBtn className="modalToggle" onClick={() => viewMoreBtn(id)}>
           <ModalToggleWord>
-            {filter.isViewOpen
-              ? `${filter.filterType} 닫기`
-              : `${filter.filterType} 모두 보기`}
+            {filter.isViewOpen ? `${filter.filterType} 닫기` : `${filter.filterType} 모두 보기`}
           </ModalToggleWord>
           <ModalToggleImg
             alt="arrow"
@@ -78,7 +73,7 @@ const ModalToggleBtn = styled.div`
 
 const ModalToggleWord = styled.div`
   margin-right: 8px;
-  font-size: ${(props) => props.theme.fontSizeMedium};
+  font-size: ${props => props.theme.fontSizeMedium};
   text-decoration: underline;
 `;
 

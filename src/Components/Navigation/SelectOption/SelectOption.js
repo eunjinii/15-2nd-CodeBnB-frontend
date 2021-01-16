@@ -10,6 +10,14 @@ const LOCATION = "isLocationClicked";
 const CALENDAR = "isCalendarClicked";
 const GUEST = "isGuestClicked";
 
+const LOCATION_MAPPING = {
+  seoul: "서울시 전체",
+  gangnam: "서울시 강남구",
+  mapo: "서울시 마포구",
+  dongjak: "서울시 동작구",
+  joonggu: "서울시 중구",
+};
+
 const SelectOption = ({
   locationRef,
   calendarRef,
@@ -36,23 +44,23 @@ const SelectOption = ({
 
   const LOCATION_PICK = (
     <LocationContainer>
-      <div onClick={() => setLocation("서울시 전체")}>
+      <div onClick={() => setLocation(LOCATION_MAPPING.seoul)}>
         <img src="/images/Navigation/search_history.png" alt="marker_icon" />
         <span>서울시 전체</span>
       </div>
-      <div onClick={() => setLocation("서울시 강남구")}>
+      <div onClick={() => setLocation(LOCATION_MAPPING.gangnam)}>
         <img src="/images/Navigation/search_history.png" alt="marker_icon" />
         <span>서울시 강남구</span>
       </div>
-      <div onClick={() => setLocation("서울시 마포구")}>
+      <div onClick={() => setLocation(LOCATION_MAPPING.mapo)}>
         <img src="/images/Navigation/search_history.png" alt="marker_icon" />
         <span>서울시 마포구</span>
       </div>
-      <div onClick={() => setLocation("서울시 동작구")}>
+      <div onClick={() => setLocation(LOCATION_MAPPING.dongjak)}>
         <img src="/images/Navigation/search_history.png" alt="marker_icon" />
         <span>서울시 동작구</span>
       </div>
-      <div onClick={() => setLocation("서울시 중구")}>
+      <div onClick={() => setLocation(LOCATION_MAPPING.joonggu)}>
         <img src="/images/Navigation/search_history.png" alt="marker_icon" />
         <span>서울시 중구</span>
       </div>
@@ -81,13 +89,13 @@ const SelectOption = ({
         </div>
         <div>
           <Minus
-            className={adult === 0 ? "noClick" : ""}
+            className={Number(adult) === 0 ? "noClick" : ""}
             onClick={() => {
-              if (adult !== 0) setAdult(adult - 1);
+              if (Number(adult) !== 0) setAdult(Number(adult) - 1);
             }}
           />
-          <span>{adult}</span>
-          <Plus onClick={() => setAdult(adult + 1)} />
+          <span>{Number(adult)}</span>
+          <Plus onClick={() => setAdult(Number(adult) + 1)} />
         </div>
       </GuestContainerSection>
       <GuestContainerSection>
@@ -97,13 +105,13 @@ const SelectOption = ({
         </div>
         <div>
           <Minus
-            className={child === 0 ? "noClick" : ""}
+            className={Number(child) === 0 ? "noClick" : ""}
             onClick={() => {
-              if (child !== 0) setChild(child - 1);
+              if (Number(child) !== 0) setChild(Number(child) - 1);
             }}
           />
-          <span>{child}</span>
-          <Plus onClick={() => setChild(child + 1)} />
+          <span>{Number(child)}</span>
+          <Plus onClick={() => setChild(Number(child) + 1)} />
         </div>
       </GuestContainerSection>
       <GuestContainerSection lastSection>
@@ -113,13 +121,13 @@ const SelectOption = ({
         </div>
         <div>
           <Minus
-            className={infant === 0 ? "noClick" : ""}
+            className={Number(infant) === 0 ? "noClick" : ""}
             onClick={() => {
-              if (infant !== 0) setInfant(infant - 1);
+              if (Number(infant) !== 0) setInfant(Number(infant) - 1);
             }}
           />
-          <span>{infant}</span>
-          <Plus onClick={() => setInfant(infant + 1)} />
+          <span>{Number(infant)}</span>
+          <Plus onClick={() => setInfant(Number(infant) + 1)} />
         </div>
       </GuestContainerSection>
     </GuestContainer>
@@ -158,7 +166,7 @@ const SelectOption = ({
           <div ref={guestRef} onClick={() => toggleMenu(GUEST)}>
             <span>인원</span>
             {adult + child + infant > 0 ? (
-              <span className="makeBlack">게스트 {adult + child + infant}명</span>
+              <span className="makeBlack">게스트 {Number(adult) + Number(child) + Number(infant)}명</span>
             ) : (
               <span>게스트 추가</span>
             )}
@@ -202,7 +210,7 @@ const SelectField = styled.section`
   width: 850px;
   height: 65px;
   border-radius: 40px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+  box-shadow: 0px 0px 10px 7px rgba(50, 50, 50, 0.08);
 `;
 
 const SectionForm = styled.section`

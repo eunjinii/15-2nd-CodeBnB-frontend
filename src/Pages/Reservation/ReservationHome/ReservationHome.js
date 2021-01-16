@@ -29,6 +29,7 @@ const ReservationHome = () => {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         if (res.RESERVATIONS_LIST) {
           setReservationList(res.RESERVATIONS_LIST);
         } else {
@@ -69,6 +70,7 @@ const ReservationHome = () => {
           <CardMain horizontal={reservationList?.length !== 0}>
             {reservationList.length === 0 && ReservationEmpty}
             {reservationList?.map(reservation => {
+              console.log(reservation);
               return <ReservationCard reservation={reservation} />;
             })}
           </CardMain>

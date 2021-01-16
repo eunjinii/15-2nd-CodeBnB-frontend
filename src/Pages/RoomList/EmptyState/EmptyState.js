@@ -6,10 +6,7 @@ const EmptyState = ({ deleteFilter }) => {
   return (
     <RoomListEmptyState>
       <h4>검색 결과 없음</h4>
-      <div>
-        날짜 변경, 필터 삭제, 지도에서 줌아웃 등을 통해 검색 결과를
-        조정해보세요.
-      </div>
+      <div>날짜 변경, 필터 삭제, 지도에서 줌아웃 등을 통해 검색 결과를 조정해보세요.</div>
       <FilterDeleteBtn onClick={deleteFilter}>모든 필터 삭제</FilterDeleteBtn>
     </RoomListEmptyState>
   );
@@ -28,13 +25,13 @@ const RoomListEmptyState = styled.div`
   h4 {
     margin-bottom: 8px;
     font-size: 22px;
-    font-weight: ${(props) => props.theme.fontWeightMedium};
+    font-weight: ${props => props.theme.fontWeightMedium};
   }
 
   div {
     margin-bottom: 24px;
-    font-size: ${(props) => props.theme.fontSizeRegular};
-    font-weight: ${(props) => props.theme.fontWeightRegular};
+    font-size: ${props => props.theme.fontSizeRegular};
+    font-weight: ${props => props.theme.fontWeightRegular};
   }
 `;
 

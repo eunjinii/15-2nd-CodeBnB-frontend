@@ -23,10 +23,10 @@ const PriceFilterDropDown = ({
 
   useEffect(() => {
     if (data.homes.length > 0) {
-      const prices = data.homes.map((home) => +home.price["1박비용"]);
+      const prices = data.homes.map(home => +home.price["1박비용"]);
       const min = Math.min(...prices);
       const max = Math.max(...prices);
-      setAvg(data.avg_price);
+      setAvg(Math.ceil(data.avg_price));
       setValue([min, max]);
       setMin(min);
       setMax(max);
@@ -44,16 +44,14 @@ const PriceFilterDropDown = ({
     const nextString = queryToString(nextQueryObj);
     curVal && history.push(`/roomlist${nextString}`);
     fetchFilteredData(nextString);
-    !value[0] || !curVal[0]
-      ? setIsPriceFiltered(false)
-      : setIsPriceFiltered(true);
+    !value[0] || !curVal[0] ? setIsPriceFiltered(false) : setIsPriceFiltered(true);
   };
 
-  const getMinInputValue = (e) => {
+  const getMinInputValue = e => {
     setCur([+e.target.value, curVal[1]]);
   };
 
-  const getMaxInputValue = (e) => {
+  const getMaxInputValue = e => {
     setCur([curVal[0], +e.target.value]);
   };
 
@@ -66,7 +64,7 @@ const PriceFilterDropDown = ({
     backgroundRef.current.addEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleClickOutside = (e) => {
+  const handleClickOutside = e => {
     if (popUpRef.current === null || !popUpRef.current.contains(e.target)) {
       document.body.style.overflow = "unset";
       handleExit();
@@ -89,10 +87,7 @@ const PriceFilterDropDown = ({
           />
         </PriceInfo>
         <Button>
-          <EraseBtn
-            active={min !== value[0] || value[1] !== max || isPriceFiltered}
-            onClick={() => setCur([min, max])}
-          >
+          <EraseBtn active={min !== value[0] || value[1] !== max || isPriceFiltered} onClick={() => setCur([min, max])}>
             지우기
           </EraseBtn>
           <ConfirmBtn
@@ -168,7 +163,7 @@ const EraseBtn = styled.div`
   cursor: pointer;
   color: #ddd;
 
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       color: #000;
