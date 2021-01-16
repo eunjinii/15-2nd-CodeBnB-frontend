@@ -24,8 +24,8 @@
 - 블로그 주소:https://velog.io/@tonyk0901
 
 ### FE 한채빈
-- 깃헙 주소:
-- 블로그 주소:
+- 깃헙 주소:https://github.com/cbhan0102
+- 블로그 주소:https://velog.io/@chaeb1n
 
 ### BE 김승재
 - 깃헙 주소: https://github.com/seungjaekim-git
