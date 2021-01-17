@@ -111,6 +111,10 @@
                 background-color: #fff;
                 border: none;
 
+                &:focus {
+                  outline: 0;
+                }
+
                 .shareBox {
                   display: flex;
                   justify-content: flex-start;
@@ -143,6 +147,10 @@
                 cursor: pointer;
                 background-color: #fff;
                 border: none;
+
+                &:focus {
+                  outline: 0;
+                }
 
                 .storageBox {
                   display: flex;

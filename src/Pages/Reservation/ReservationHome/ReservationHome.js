@@ -29,7 +29,6 @@ const ReservationHome = () => {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         if (res.RESERVATIONS_LIST) {
           setReservationList(res.RESERVATIONS_LIST);
         } else {
@@ -69,9 +68,8 @@ const ReservationHome = () => {
           </CardHeader>
           <CardMain horizontal={reservationList?.length !== 0}>
             {reservationList.length === 0 && ReservationEmpty}
-            {reservationList?.map(reservation => {
-              console.log(reservation);
-              return <ReservationCard reservation={reservation} />;
+            {reservationList?.map((reservation, idx) => {
+              return <ReservationCard key={idx} reservation={reservation} />;
             })}
           </CardMain>
         </ReservationContainer>

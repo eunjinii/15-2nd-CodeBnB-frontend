@@ -300,7 +300,7 @@ class RoomDetail extends Component {
           {this.state.imgMoreModal ? (
             <PopUp title="사진 모두 보기" handleExit={() => this.handleModal("imgMoreModal")}>
               <div className="imgMoreBox">
-                <img className="ImgMoreContainer" alt="이미지더보기버튼" src={house.images?.[0]}></img>
+                <img className="ImgMoreContainer" alt="이미지더보기버튼" src={house.images?.[0]} />
               </div>
             </PopUp>
           ) : (
@@ -316,9 +316,9 @@ class RoomDetail extends Component {
                 <div className="imgSlider">
                   <img className="imgSmall1" alt="작은 이미지" src={house.images?.[1]} />
                   <img className="imgSmall2" alt="작은 이미지" src={house.images?.[2]} />
-                  <img className="imgSmall3" alt="작은 이미지" src={house.images?.[4]} />
+                  <img className="imgSmall3" alt="작은 이미지" src={house.images?.[3]} />
                   <div class="grid12-6">
-                    <img className="imgSmall4" alt="작은 이미지" src={house.images?.[2]} />
+                    <img className="imgSmall4" alt="작은 이미지" src={house.images?.[4]} />
                     <div className="inner_box">
                       <button class="moreImgBtn" onClick={() => this.handleModal("imgMoreModal")} type="button">
                         <img className="imgIcon" alt="사진 모두 보기" src="/images/RoomDetail/dot.png" />
@@ -397,7 +397,7 @@ class RoomDetail extends Component {
                       <div className="facilitiesTitleBox">
                         <div className="facilitiesTitle">편의시설</div>
                         {house.facilities_list?.map((facility, index) => {
-                          return <Facility facility={facility} />;
+                          return <Facility key={index} facility={facility} />;
                         })}
                         <button
                           class="facilitiesMoreBtn"
@@ -412,7 +412,7 @@ class RoomDetail extends Component {
                               <div className="facilitiesMore">
                                 {facilityTypes &&
                                   facilityTypes.map((facilities, index) => {
-                                    return <FacilityType key={index} facilities={facilities} key={index} />;
+                                    return <FacilityType key={index} facilities={facilities} />;
                                   })}
                               </div>
                             </PopUp>
@@ -470,7 +470,10 @@ class RoomDetail extends Component {
                           <img className="hostImg" alt="hostImg" src="/images/RoomDetail/jsLove.png" />
                         </div>
                         <div className="hostNameSignDate">
-                          <div className="hostName">호스트:{house.host?.host_name}님</div>
+                          <div className="hostName">
+                            호스트:{house.host?.last_name}
+                            {house.host?.first_name}님
+                          </div>
                           <div className="signDate">회원 가입일:2017년 11월</div>
                         </div>
                       </div>
@@ -498,7 +501,10 @@ class RoomDetail extends Component {
                           </div>
 
                           <div className="superHostContainer">
-                            <div className="superHost">{house.host?.host_name}님은 슈퍼호스트입니다.</div>
+                            <div className="superHost">
+                              {house.host?.last_name}
+                              {house.host?.first_name}님은 슈퍼호스트입니다.
+                            </div>
                             <div className="superHostMeaning">
                               슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서 편안히 머무를 수 있도록
                               최선을 다하는 호스트입니다.
