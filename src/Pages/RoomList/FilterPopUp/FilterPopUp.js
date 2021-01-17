@@ -141,7 +141,7 @@ const FilterListBed = styled.div`
   }
 `;
 
-const FilterListsRest = styled.li`
+const FilterListsRest = styled.div`
   padding: 0 50px 20px;
 `;
 
