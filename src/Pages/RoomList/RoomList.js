@@ -8,12 +8,12 @@ import moment from "moment";
 import FilterPopUp from "./FilterPopUp/FilterPopUp";
 import FilterDropDown from "./FilterDropDown/FilterDropDown";
 import PriceFilterDropDown from "./PriceFilterDropDown/PriceFilterDropDown";
-import PageButtons from "./PageButtons/PageButtons";
+// import PageButtons from "./PageButtons/PageButtons";
+import PaginationRanges from "./Pagination/Pagination";
 import EmptyState from "./EmptyState/EmptyState";
 import Footer from "../../Components/Footer/Footer";
 import Navigation from "../../Components/Navigation/Navigation";
 import { ROOMLIST_API as API } from "../../config";
-import { SentimentDissatisfiedSharp } from "@material-ui/icons";
 
 const LIMIT = `15`;
 
@@ -55,6 +55,7 @@ const RoomList = () => {
   const [isConditionFiltered, setIsConditionFiltered] = useState(false);
   const [filteredResult, setFilteredResult] = useState([]);
   const [prevFilterState, setPrevFilterState] = useState([]);
+  const [page, setPage] = useState([]);
 
   const stringToQuery = query => {
     const [_, params] = query.split("?");
@@ -284,12 +285,11 @@ const RoomList = () => {
   }, [urlLocation]);
 
   //페이지네이션
-  const paging = e => {
-    const offset = e.target.dataset.index;
-    if (!offset) return;
+  const paging = (e, page) => {
+    if (!page) return;
     const nextQueryObj = { ...stringToQuery(history.location.search) };
     nextQueryObj["limit"] = LIMIT;
-    nextQueryObj["offset"] = offset * LIMIT;
+    nextQueryObj["offset"] = page * LIMIT;
     const nextString = queryToString(nextQueryObj);
     history.push(`/roomlist${nextString}`);
     fetch(`${API}/homes?${nextString}`)
@@ -475,7 +475,8 @@ const RoomList = () => {
           <EmptyState deleteFilter={deleteFilter} />
         )}
       </RoomListContainer>
-      {data.homes && <PageButtons paging={paging} homesCount={data.homes.length} />}
+      {/*data.homes && <PageButtons paging={paging} homesCount={data.homes.length} />*/}
+      <PaginationRanges homesCount={data.homes_count} paging={paging} setPage={setPage} />
       <Footer />
     </RoomListPage>
   );

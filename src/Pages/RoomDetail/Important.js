@@ -4,10 +4,21 @@ import "./Important.scss";
 class Important extends Component {
   render() {
     const { rule } = this.props;
+    const ruleSet = new Set(rule.rule_list);
+
     return (
       <div className="importantBoxItem">
         <div className="roomRule">{rule && rule.category}</div>
-        <div className="roomRuleBox">{rule && rule.rule_list} </div>
+        <ul className="roomRuleBox">
+          {rule &&
+            [...ruleSet].map((item, index) => {
+              return (
+                <li key={index} className="ruleItem">
+                  {item}
+                </li>
+              );
+            })}
+        </ul>
       </div>
     );
   }
